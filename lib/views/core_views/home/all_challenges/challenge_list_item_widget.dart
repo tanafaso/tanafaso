@@ -11,6 +11,7 @@ import 'package:azkar/utils/features.dart';
 import 'package:azkar/utils/snack_bar_utils.dart';
 import 'package:azkar/utils/snapshot_utils.dart';
 import 'package:azkar/views/core_views/home/all_challenges/challenge_list_item_loading_widget.dart';
+import 'package:azkar/views/core_views/home/all_challenges/challenge_widget_util.dart';
 import 'package:azkar/views/core_views/home/create_challenge/create_azkar_challenge_screen.dart';
 import 'package:azkar/views/core_views/home/create_challenge/create_custom_simple_challenge_screen.dart';
 import 'package:azkar/views/core_views/home/create_challenge/create_meaning_challenge_screen.dart';
@@ -314,7 +315,9 @@ class _ChallengeListItemWidgetState extends State<ChallengeListItemWidget>
                           ),
                         ),
                       ),
-                      Visibility(child: getDeadlineText(context)),
+                      Visibility(
+                          child: ChallengeWidgetUtil.getDeadlineText(
+                              context, widget.challenge)),
                       // getFriendsNames(),
                     ],
                   ),
@@ -649,105 +652,6 @@ class _ChallengeListItemWidgetState extends State<ChallengeListItemWidget>
       color: Colors.yellow.shade600,
       size: 35,
     );
-  }
-
-  Widget getDeadlineText(BuildContext context) {
-    if (widget.challenge.deadlinePassed()) {
-      return Text(
-        "انتهى التحدي",
-        style: new TextStyle(
-          color: Colors.grey.shade700,
-          // fontWeight: FontWeight.bold,
-          fontSize: 25,
-        ),
-      );
-    }
-
-    int daysLeft = widget.challenge.daysLeft();
-    if (daysLeft != 0) {
-      return Text.rich(TextSpan(
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 25,
-        ),
-        children: <TextSpan>[
-          new TextSpan(
-              text: AppLocalizations.of(context).endsAfter,
-              style: new TextStyle(
-                  color: Colors.grey.shade700, fontWeight: FontWeight.bold)),
-          new TextSpan(
-            text:
-                ' ${ArabicUtils.englishToArabic(widget.challenge.daysLeft().toString())} ',
-          ),
-          new TextSpan(
-            text: AppLocalizations.of(context).day,
-          )
-        ],
-      ));
-    }
-
-    int hoursLeft = widget.challenge.hoursLeft();
-    if (hoursLeft != 0) {
-      return Text.rich(TextSpan(
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 25,
-        ),
-        children: <TextSpan>[
-          new TextSpan(
-              text: AppLocalizations.of(context).endsAfter,
-              style: new TextStyle(
-                  color: Colors.grey.shade700, fontWeight: FontWeight.bold)),
-          new TextSpan(
-            text:
-                ' ${ArabicUtils.englishToArabic(widget.challenge.hoursLeft().toString())} ',
-          ),
-          new TextSpan(
-            text: AppLocalizations.of(context).hour,
-          )
-        ],
-      ));
-    }
-
-    int minutesLeft = widget.challenge.minutesLeft();
-    if (minutesLeft == 0) {
-      return Text.rich(TextSpan(
-        style: TextStyle(
-          color: Colors.black,
-          fontSize: 25,
-        ),
-        children: <TextSpan>[
-          new TextSpan(
-              text: AppLocalizations.of(context).endsAfterLessThan,
-              style: new TextStyle(
-                  color: Colors.grey.shade700, fontWeight: FontWeight.bold)),
-          new TextSpan(
-            text: ' ١ ',
-          ),
-          new TextSpan(
-            text: AppLocalizations.of(context).minute,
-          )
-        ],
-      ));
-    }
-    return Text.rich(TextSpan(
-      style: TextStyle(
-        color: Colors.black,
-        fontSize: 25,
-      ),
-      children: <TextSpan>[
-        new TextSpan(
-            text: AppLocalizations.of(context).endsAfter,
-            style: new TextStyle(
-                color: Colors.grey.shade700, fontWeight: FontWeight.bold)),
-        new TextSpan(
-          text: ' ${ArabicUtils.englishToArabic(minutesLeft.toString())} ',
-        ),
-        new TextSpan(
-          text: AppLocalizations.of(context).minute,
-        )
-      ],
-    ));
   }
 
   @override

@@ -86,6 +86,7 @@ class _LayoutOrganizerState extends State<LayoutOrganizer>
     // Get the token each time the application loads.
     String? token = await FirebaseMessaging.instance.getToken();
 
+    print(token);
     // Send initial token to database.
     sendTokenToDatabase(token!);
 
@@ -107,23 +108,6 @@ class _LayoutOrganizerState extends State<LayoutOrganizer>
     ServiceProvider.localNotificationsService.configureNextNudgeNotification();
 
     WidgetsBinding.instance.addObserver(this);
-
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   FeatureDiscovery.discoverFeatures(
-    //     context,
-    //     // Feature ids for every feature that we want to showcase in order.
-    //     [
-    //       Features.CHALLENGES_SCREEN,
-    //       Features.FRIENDS_SCREEN,
-    //       Features.PROFILE_SCREEN,
-    //       Features.LIVE_SUPPORT_SCREEN,
-    //       Features.SETTING_SCREEN,
-    //       Features.SABEQ_INTRODUCTION,
-    //       Features.ADD_FRIEND,
-    //       Features.SHARE_USERNAME,
-    //     ],
-    //   );
-    // });
 
     super.initState();
   }

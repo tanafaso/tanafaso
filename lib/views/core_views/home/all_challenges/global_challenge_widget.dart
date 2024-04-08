@@ -6,6 +6,7 @@ import 'package:azkar/utils/app_localizations.dart';
 import 'package:azkar/utils/arabic_utils.dart';
 import 'package:azkar/utils/features.dart';
 import 'package:azkar/views/core_views/home/all_challenges/challenge_list_item_loading_widget.dart';
+import 'package:azkar/views/core_views/home/all_challenges/challenge_widget_util.dart';
 import 'package:azkar/views/core_views/home/do_challenge/do_global_challenge/do_global_challenge_screen.dart';
 import 'package:azkar/views/core_views/home/home_main_screen.dart';
 import 'package:feature_discovery/feature_discovery.dart';
@@ -58,9 +59,10 @@ class _GlobalChallengeWidgetState extends State<GlobalChallengeWidget>
               _globalChallenge.challenge.challengeType == ChallengeType.AZKAR) {
             return SafeArea(
               child: Banner(
-                message: 'جديد',
-                location: BannerLocation.topEnd,
-                textStyle: TextStyle(fontSize: 20),
+                message: 'مشترك',
+                color: Colors.green,
+                location: BannerLocation.topStart,
+                textStyle: TextStyle(fontSize: 15, color: Colors.white),
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 4),
                   child: RawMaterialButton(
@@ -124,14 +126,6 @@ class _GlobalChallengeWidgetState extends State<GlobalChallengeWidget>
                       textColor: Colors.black,
                       child: Column(
                         children: [
-                          Text(
-                            AppLocalizations.of(context).globalChallenge,
-                            style: TextStyle(
-                                fontSize: 35, fontWeight: FontWeight.bold),
-                            maxLines: 1,
-                            textAlign: TextAlign.center,
-                            overflow: TextOverflow.ellipsis,
-                          ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Row(
@@ -173,42 +167,46 @@ class _GlobalChallengeWidgetState extends State<GlobalChallengeWidget>
                                 softWrap: false,
                                 maxLines: 3,
                                 style: TextStyle(fontSize: 25),
-                                textAlign: TextAlign.center,
+                                textAlign: TextAlign.start,
                                 minFontSize: 25,
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(top: 16.0),
-                            child: Text.rich(
-                              TextSpan(
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 25,
-                                ),
-                                children: <TextSpan>[
-                                  new TextSpan(
-                                    text: 'أُنهي ',
-                                    style: new TextStyle(
-                                        fontWeight: FontWeight.bold),
+                              padding: EdgeInsets.only(top: 16, right: 8),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerRight,
+                                    child: ChallengeWidgetUtil.getDeadlineText(
+                                        context, _globalChallenge.challenge),
                                   ),
-                                  new TextSpan(
-                                    text: ArabicUtils.englishToArabic(
-                                        _globalChallenge.finishedCount
-                                            .toString()),
-                                    style: new TextStyle(
+                                  Row(
+                                    children: [
+                                      Text(
+                                        ArabicUtils.englishToArabic(
+                                            _globalChallenge.finishedCount
+                                                .toString()),
+                                        style: TextStyle(
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.green,
+                                        ),
+                                      ),
+                                      Padding(
+                                          padding: EdgeInsets.only(left: 4)),
+                                      Icon(
+                                        Icons.keyboard_double_arrow_up_rounded,
                                         color: Colors.green,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  new TextSpan(
-                                    text: ' مرة',
-                                    style: new TextStyle(
-                                        fontWeight: FontWeight.bold),
+                                        size: 45,
+                                      ),
+                                      Padding(padding: EdgeInsets.only(left: 8)),
+                                    ],
                                   ),
                                 ],
-                              ),
-                            ),
-                          )
+                              ))
                         ],
                       ),
                     ),
