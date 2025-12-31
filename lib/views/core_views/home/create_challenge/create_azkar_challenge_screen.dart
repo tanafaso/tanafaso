@@ -442,7 +442,7 @@ class _CreateAzkarChallengeScreenState
         height: 50,
         child: TextButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.grey),
+            backgroundColor: WidgetStateProperty.all(Colors.grey),
           ),
           onPressed: () async => onCreatePressed(),
           child: Center(

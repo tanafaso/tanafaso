@@ -149,10 +149,10 @@ class _FindFriendsNotPubliclyAvailableWidgetState
                               color: Colors.black,
                               width: 2,
                             ),
-                            overlayColor: MaterialStateProperty.resolveWith(
+                            overlayColor: WidgetStateProperty.resolveWith(
                                 (_) => Colors.green.shade300),
                             checkColor: Colors.black,
-                            fillColor: MaterialStateProperty.resolveWith(
+                            fillColor: WidgetStateProperty.resolveWith(
                                 (_) => Colors.white),
                             value: _consentGiven,
                             onChanged: (_) {

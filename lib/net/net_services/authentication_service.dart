@@ -38,7 +38,7 @@ class AuthenticationService {
 
     GoogleAuthenticationResponse response =
         GoogleAuthenticationResponse.fromJson(
-            jsonDecode(utf8.decode(apiResponse.body.codeUnits)));
+            jsonDecode(utf8.decode(apiResponse.bodyBytes)));
 
     if (!response.hasError()) {
       final jwtToken = apiResponse.headers[HttpHeaders.authorizationHeader];
@@ -112,7 +112,7 @@ class AuthenticationService {
             .toJson()));
 
     AppleAuthenticationResponse response = AppleAuthenticationResponse.fromJson(
-        jsonDecode(utf8.decode(apiResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(apiResponse.bodyBytes)));
 
     if (!response.hasError()) {
       final jwtToken = apiResponse.headers[HttpHeaders.authorizationHeader];
@@ -142,7 +142,7 @@ class AuthenticationService {
     }
 
     var response = EmailRegistrationResponse.fromJson(
-        jsonDecode(utf8.decode(apiResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(apiResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -170,7 +170,7 @@ class AuthenticationService {
     }
 
     var response = EmailLoginResponse.fromJson(
-        jsonDecode(utf8.decode(apiResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(apiResponse.bodyBytes)));
 
     if (!response.hasError()) {
       final jwtToken = apiResponse.headers[HttpHeaders.authorizationHeader];
@@ -188,7 +188,7 @@ class AuthenticationService {
         requestBody: requestBody);
 
     var response = ResetPasswordResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }

@@ -76,7 +76,7 @@ class _FriendRequestWidgetState extends State<FriendRequestWidget> {
                       child: Text(AppLocalizations.of(context).accept),
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(Colors.green.shade400),
+                            WidgetStateProperty.all(Colors.green.shade400),
                       ),
                       onPressed: () => onAcceptedPressed(),
                     ),

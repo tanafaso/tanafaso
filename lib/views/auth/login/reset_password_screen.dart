@@ -140,7 +140,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                                               child: ElevatedButton(
                                                   style: ButtonStyle(
                                                       backgroundColor:
-                                                          MaterialStateProperty
+                                                          WidgetStateProperty
                                                               .all(Colors.green
                                                                   .shade400)),
                                                   onPressed: () {

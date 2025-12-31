@@ -76,7 +76,7 @@ class LocalNotificationsService {
       'ابدأ بنفسك وكن أنت الذي يدفع عائلاته وأصدقائه إلى ذكر الله بنية طيبة, فهذا يقربك إلى الله ويوطد العلاقات بينك وبين أحبابك 🔥',
       preferredRepeatInterval,
       platformChannelSpecifics,
-      androidAllowWhileIdle: true,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
     );
   }
 

@@ -75,8 +75,8 @@ class _SelectedSurahsWidgetState extends State<SelectedSurahsWidget>
               child: ElevatedButton(
                 style: ButtonStyle(
                     elevation:
-                        MaterialStateProperty.resolveWith((states) => 10),
-                    shape: MaterialStateProperty.resolveWith((_) =>
+                        WidgetStateProperty.resolveWith((states) => 10),
+                    shape: WidgetStateProperty.resolveWith((_) =>
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)))),
                 onPressed: () async {

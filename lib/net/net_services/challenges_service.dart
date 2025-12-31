@@ -45,7 +45,7 @@ class ChallengesService {
         requestBody: requestBody);
 
     var response = AddAzkarChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -60,7 +60,7 @@ class ChallengesService {
         requestBody: requestBody);
 
     var response = AddAzkarChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -75,7 +75,7 @@ class ChallengesService {
         requestBody: requestBody);
 
     var response = AddMeaningChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -91,7 +91,7 @@ class ChallengesService {
         requestBody: requestBody);
 
     var response = AddReadingQuranChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -107,7 +107,7 @@ class ChallengesService {
         requestBody: requestBody);
 
     var response = AddMemorizationChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -123,7 +123,7 @@ class ChallengesService {
         requestBody: requestBody);
 
     var response = AddCustomSimpleChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -138,7 +138,7 @@ class ChallengesService {
             pathVariables: [id]));
 
     var response = FinishMeaningChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -155,7 +155,7 @@ class ChallengesService {
             pathVariables: [id]));
 
     var response = FinishReadingQuranChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -172,7 +172,7 @@ class ChallengesService {
             pathVariables: [id]));
 
     var response = FinishCustomSimpleChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -186,7 +186,7 @@ class ChallengesService {
             endpointRoute: EndpointRoute.FINISH_GLOBAL_CHALLENGE));
 
     var response = FinishGlobalChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -205,7 +205,7 @@ class ChallengesService {
 
     http.Response httpResponse = await ApiCaller.get(
         route: Endpoint(endpointRoute: EndpointRoute.GET_ALL_CHALLENGES));
-    String responseBody = utf8.decode(httpResponse.body.codeUnits);
+    String responseBody = utf8.decode(httpResponse.bodyBytes);
     var response = GetChallengesResponse.fromJson(jsonDecode(responseBody));
     if (response.hasError()) {
       throw new ApiException(response.error!);
@@ -221,7 +221,7 @@ class ChallengesService {
             endpointRoute: EndpointRoute.GET_AZKAR_CHALLENGE,
             pathVariables: [challengeId]));
     var response = GetAzkarChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -233,7 +233,7 @@ class ChallengesService {
         route: Endpoint(
             endpointRoute: EndpointRoute.GET_GLOBAL_CHALLENGE));
     var response = GetGlobalChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -248,7 +248,7 @@ class ChallengesService {
             endpointRoute: EndpointRoute.DELETE_CHALLENGE,
             pathVariables: [challengeId]));
     var response = DeleteChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -266,7 +266,7 @@ class ChallengesService {
             endpointRoute: EndpointRoute.GET_ORIGINAL_CHALLENGE,
             pathVariables: [challengeId]));
     var response = GetAzkarChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -285,7 +285,7 @@ class ChallengesService {
             pathVariables: [challenge.id!]),
         requestBody: requestBody);
     var response = UpdateAzkarChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -308,7 +308,7 @@ class ChallengesService {
           ]),
     );
     var response = FinishMemorizationChallengeResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -325,8 +325,9 @@ class ChallengesService {
     http.Response httpResponse = await ApiCaller.get(
         route: Endpoint(
             endpointRoute: EndpointRoute.GET_FINISHED_CHALLENGES_COUNT));
+    
     var response = GetFinishedChallengesCountResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }

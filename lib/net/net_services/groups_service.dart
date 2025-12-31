@@ -17,7 +17,7 @@ class GroupsService {
         route: Endpoint(
             endpointRoute: EndpointRoute.GET_GROUP, pathVariables: [groupId]));
     var response = GetGroupResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -35,7 +35,7 @@ class GroupsService {
 
     http.Response httpResponse = await ApiCaller.get(
         route: Endpoint(endpointRoute: EndpointRoute.GET_GROUPS));
-    var responseBody = utf8.decode(httpResponse.body.codeUnits);
+    var responseBody = utf8.decode(httpResponse.bodyBytes);
     var response = GetGroupsResponse.fromJson(jsonDecode(responseBody));
     if (response.hasError()) {
       throw new ApiException(response.error!);

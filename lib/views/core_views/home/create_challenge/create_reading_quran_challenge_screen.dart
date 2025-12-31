@@ -196,7 +196,7 @@ class _CreateReadingQuranChallengeScreenState
         // ignore: deprecated_member_use
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.grey),
+            backgroundColor: WidgetStateProperty.all(Colors.grey),
           ),
           onPressed: () async => onCreatePressed(),
           child: Center(

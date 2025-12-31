@@ -89,8 +89,8 @@ class _SelectedAzkarWidgetState extends State<SelectedAzkarWidget>
             padding: EdgeInsets.all(8),
             child: ElevatedButton(
               style: ButtonStyle(
-                  elevation: MaterialStateProperty.resolveWith((states) => 10),
-                  shape: MaterialStateProperty.resolveWith((_) =>
+                  elevation: WidgetStateProperty.resolveWith((states) => 10),
+                  shape: WidgetStateProperty.resolveWith((_) =>
                       RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30)))),
               onPressed: () {

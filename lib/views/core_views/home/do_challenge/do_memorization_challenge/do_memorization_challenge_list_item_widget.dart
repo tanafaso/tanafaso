@@ -198,6 +198,8 @@ class _DoMemorizationChallengeListItemWidgetState
         );
       case Step.DONE:
         return Container();
+      case null:
+        return Container();
     }
 
     assert(false);

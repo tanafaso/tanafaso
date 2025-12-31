@@ -50,7 +50,7 @@ class _PubliclyAvailableUserWidgetState
             : Text(AppLocalizations.of(context).invite, style: TextStyle(fontSize: 20)),
         style: ButtonStyle(
           backgroundColor:
-              MaterialStateProperty.all(invited ? null : Colors.green.shade400),
+              WidgetStateProperty.all(invited ? null : Colors.green.shade400),
         ),
         onPressed: () => invited ? null : onInvitePressed(),
       ),

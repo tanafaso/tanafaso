@@ -32,11 +32,20 @@ class _FriendListItemWidgetState extends State<FriendListItemWidget> {
     _detailedView = false;
 
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      String sabeqId = await ServiceProvider.usersService.getSabeqId();
-      if (mounted) {
-        setState(() {
-          _isSabeq = sabeqId == widget.friendshipScores.userId;
-        });
+      try {
+        String sabeqId = await ServiceProvider.usersService.getSabeqId();
+        if (mounted) {
+          setState(() {
+            _isSabeq = sabeqId == widget.friendshipScores.userId;
+          });
+        }
+      } catch (e) {
+        // Silently fail if unable to get sabeq ID (e.g., timeout)
+        if (mounted) {
+          setState(() {
+            _isSabeq = false;
+          });
+        }
       }
     });
   }

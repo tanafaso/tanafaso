@@ -43,7 +43,7 @@ class UsersService {
       http.Response httpResponse = await ApiCaller.get(
           route:
               Endpoint(endpointRoute: EndpointRoute.GET_CURRENT_USER_PROFILE));
-      var responseBody = utf8.decode(httpResponse.body.codeUnits);
+      var responseBody = utf8.decode(httpResponse.bodyBytes);
       var response = GetUserResponse.fromJson(jsonDecode(responseBody));
       if (response.hasError()) {
         throw new ApiException(response.error!);
@@ -58,7 +58,7 @@ class UsersService {
   Future<User> deleteCurrentUser() async {
     http.Response httpResponse = await ApiCaller.delete(
         route: Endpoint(endpointRoute: EndpointRoute.DELETE_CURRENT_USER));
-    var responseBody = utf8.decode(httpResponse.body.codeUnits);
+    var responseBody = utf8.decode(httpResponse.bodyBytes);
     var response = DeleteUserResponse.fromJson(jsonDecode(responseBody));
     if (response.hasError()) {
       throw new ApiException(response.error!);
@@ -119,8 +119,14 @@ class UsersService {
     }
     http.Response httpResponse = await ApiCaller.get(
         route: Endpoint(endpointRoute: EndpointRoute.GET_SABEQ));
-    var response = GetUserResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+    GetUserResponse response;
+    try {
+      response = GetUserResponse.fromJson(
+          jsonDecode(utf8.decode(httpResponse.bodyBytes)));
+    } on FormatException {
+      // Server returned non-JSON response (e.g., timeout message)
+      throw ApiException.withDefaultError();
+    }
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -133,7 +139,7 @@ class UsersService {
         route: Endpoint(
             endpointRoute: EndpointRoute.GET_USER_BY_ID, pathVariables: [id]));
     var response = GetUserResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -163,7 +169,7 @@ class UsersService {
             endpointRoute: EndpointRoute.GET_USER_BY_USERNAME,
             requestParams: {'username': username}));
     var response = GetUserResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -176,7 +182,7 @@ class UsersService {
             endpointRoute: EndpointRoute.GET_USER_BY_FACEBOOK_USER_ID,
             requestParams: {'facebook_user_id': facebookUserId}));
     var response = GetUserResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -188,7 +194,7 @@ class UsersService {
         route: Endpoint(
             endpointRoute: EndpointRoute.GET_PUBLICLY_AVAILABLE_USERS));
     var response = GetPubliclyAvailableUsersResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -202,7 +208,7 @@ class UsersService {
             endpointRoute: EndpointRoute.GET_PUBLICLY_AVAILABLE_USERS_WITH_PAGE,
             requestParams: {'page_num': pageNum.toString()}));
     var response = GetPubliclyAvailableUsersResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -214,7 +220,7 @@ class UsersService {
         route: Endpoint(
             endpointRoute: EndpointRoute.DELETE_FROM_PUBLICLY_AVAILABLE_USERS));
     var response = DeleteFromPubliclyAvailableUsersResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -225,7 +231,7 @@ class UsersService {
         route: Endpoint(
             endpointRoute: EndpointRoute.ADD_TO_PUBLICLY_AVAILABLE_MALES));
     var response = AddToPubliclyAvailableUsersResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -236,7 +242,7 @@ class UsersService {
         route: Endpoint(
             endpointRoute: EndpointRoute.ADD_TO_PUBLICLY_AVAILABLE_FEMALES));
     var response = AddToPubliclyAvailableUsersResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -250,7 +256,7 @@ class UsersService {
         route: Endpoint(
             endpointRoute: EndpointRoute.ADD_FRIEND, pathVariables: [userId]));
     var response = AddFriendResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -261,7 +267,7 @@ class UsersService {
         route: Endpoint(
             endpointRoute: EndpointRoute.ADD_FRIEND, pathVariables: [userId]));
     var response = AddFriendResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -273,7 +279,7 @@ class UsersService {
             endpointRoute: EndpointRoute.DELETE_FRIEND, pathVariables: [id]));
 
     var response = DeleteFriendResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
 
     if (response.hasError()) {
       throw new ApiException(response.error!);
@@ -294,7 +300,7 @@ class UsersService {
 
     http.Response httpResponse = await ApiCaller.get(
         route: Endpoint(endpointRoute: EndpointRoute.GET_FRIENDS_LEADERBOARD));
-    var responseBody = utf8.decode(httpResponse.body.codeUnits);
+    var responseBody = utf8.decode(httpResponse.bodyBytes);
     var response =
         GetFriendsLeaderboardResponse.fromJson(jsonDecode(responseBody));
     if (response.hasError()) {
@@ -311,7 +317,7 @@ class UsersService {
             endpointRoute: EndpointRoute.ACCEPT_FRIEND,
             pathVariables: [friendId]));
     var response = ResolveFriendRequestResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -325,7 +331,7 @@ class UsersService {
             endpointRoute: EndpointRoute.REJECT_FRIEND,
             pathVariables: [friendId]));
     var response = ResolveFriendRequestResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }
@@ -339,7 +345,7 @@ class UsersService {
         route: Endpoint(endpointRoute: EndpointRoute.SET_NOTIFICATIONS_TOKEN),
         requestBody: requestBody);
     var response = SetNotificationsTokenResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }

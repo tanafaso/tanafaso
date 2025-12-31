@@ -31,11 +31,13 @@ class HomeService {
 
       http.Response httpResponse = await ApiCaller.get(
           route: Endpoint(endpointRoute: EndpointRoute.GET_HOME));
-      String responseBody = utf8.decode(httpResponse.body.codeUnits);
 
+      // Use bodyBytes instead of body.codeUnits to properly decode UTF-8 response
+      String responseBody = utf8.decode(httpResponse.bodyBytes);
       var response = GetHomeResponse.fromJson(jsonDecode(responseBody));
 
       if (response.hasError()) {
+        print('GET_HOME API returned error: ${response.error!.code} - ${response.error!.errorMessage}');
         throw new ApiException(response.error!);
       }
 

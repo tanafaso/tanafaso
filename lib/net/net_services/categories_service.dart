@@ -12,7 +12,7 @@ class CategoriesService {
         route: Endpoint(endpointRoute: EndpointRoute.GET_CATEGORIES));
 
     var response = GetCategoriesResponse.fromJson(
-        jsonDecode(utf8.decode(httpResponse.body.codeUnits)));
+        jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
       throw new ApiException(response.error!);
     }

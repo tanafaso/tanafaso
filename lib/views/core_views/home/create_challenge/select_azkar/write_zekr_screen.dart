@@ -99,7 +99,7 @@ class _WriteZekrScreenState extends State<WriteZekrScreen> {
       child: ButtonTheme(
         child: ElevatedButton(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.grey),
+            backgroundColor: WidgetStateProperty.all(Colors.grey),
           ),
           onPressed: () async => onAddPressed(),
           child: Center(

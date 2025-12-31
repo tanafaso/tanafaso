@@ -35,7 +35,7 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace "com.tanafaso.azkar"
 
-    compileSdkVersion 33
+    compileSdk 36
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -44,9 +44,8 @@ android {
 
     defaultConfig {
         applicationId "com.tanafaso.azkar"
-        minSdkVersion 21
-        targetSdkVersion 34
-        compileSdkVersion 34
+        minSdkVersion 24
+        targetSdkVersion 36
         multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -81,6 +80,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 }
 
 flutter {
@@ -104,7 +106,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.google.firebase:firebase-messaging:23.0.0'
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
 }
 
 rootProject.ext {
