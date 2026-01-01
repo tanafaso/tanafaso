@@ -37,9 +37,8 @@ public class AzkarCacher {
   @Primary
   public AzkarCacher parseAzkarFromCsv() {
     AzkarCacher cacher = new AzkarCacher();
-    try {
-      CSVReader csvReader =
-          new CSVReader(new InputStreamReader(new ClassPathResource(azkarFile).getInputStream()));
+    try (CSVReader csvReader =
+        new CSVReader(new InputStreamReader(new ClassPathResource(azkarFile).getInputStream()))) {
       String[] values;
       while ((values = csvReader.readNext()) != null) {
         if (values.length != 2) {

@@ -579,8 +579,10 @@ public class ApiAuthenticationController extends BaseController {
   }
 
   private String getEmailTemplate(String path) throws IOException {
-    return IOUtils.toString(
-        new InputStreamReader(new ClassPathResource(path).getInputStream()));
+    try (InputStreamReader reader =
+        new InputStreamReader(new ClassPathResource(path).getInputStream())) {
+      return IOUtils.toString(reader);
+    }
   }
 
   private void sendEmail(String email, String subject, String body)
@@ -631,25 +633,16 @@ public class ApiAuthenticationController extends BaseController {
     appleApiRequestHeader.put("kid", appleSignInKeyId);
     appleApiRequestHeader.put("typ", "JWT");
 
-    InputStreamReader appleAuthPrivateKeyInputStreamReader;
-    try {
-      appleAuthPrivateKeyInputStreamReader =
-          new InputStreamReader(new ClassPathResource(appleAuthPrivateKeyFile).getInputStream());
-    } catch (IOException e) {
-      logger.error("Couldn't read the apple authorization private key file.", e);
-      return false;
-    }
-
     ECPrivateKey privateKey;
-    try {
-      PemObject pemObject;
-      pemObject = new PemReader(appleAuthPrivateKeyInputStreamReader).readPemObject();
+    try (InputStreamReader appleAuthPrivateKeyInputStreamReader =
+        new InputStreamReader(new ClassPathResource(appleAuthPrivateKeyFile).getInputStream());
+        PemReader pemReader = new PemReader(appleAuthPrivateKeyInputStreamReader)) {
+      PemObject pemObject = pemReader.readPemObject();
       PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(pemObject.getContent());
-      KeyFactory factory;
-      factory = KeyFactory.getInstance("EC");
+      KeyFactory factory = KeyFactory.getInstance("EC");
       privateKey = (ECPrivateKey) factory.generatePrivate(spec);
     } catch (Exception e) {
-      logger.error("Could not convert Apple private key into an EC key.", e);
+      logger.error("Could not read or convert Apple private key.", e);
       return false;
     }
 
