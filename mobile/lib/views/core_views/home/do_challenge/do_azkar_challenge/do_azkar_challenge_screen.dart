@@ -85,7 +85,48 @@ class _DoAzkarChallengeScreenState extends State<DoAzkarChallengeScreen>
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 4),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'التقدم',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey.shade700,
+                              ),
+                            ),
+                            Text(
+                              '${widget.challenge.subChallenges.where((s) => s.done()).length}/${widget.challenge.subChallenges.length}',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green.shade700,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 6),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: LinearProgressIndicator(
+                            value: widget.challenge.subChallenges.isEmpty
+                                ? 0
+                                : widget.challenge.subChallenges.where((s) => s.done()).length /
+                                    widget.challenge.subChallenges.length,
+                            backgroundColor: Colors.grey.shade300,
+                            valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                            minHeight: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
                     child: Card(
                       child: ExpansionTile(
                         key: GlobalKey(debugLabel: 'friends_tile_key'),

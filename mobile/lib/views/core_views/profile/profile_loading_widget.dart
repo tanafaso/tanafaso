@@ -6,191 +6,307 @@ import 'package:shimmer/shimmer.dart';
 class ProfileLoadingWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Shimmer.fromColors(
-      baseColor: Colors.grey[500]!,
-      highlightColor: Colors.grey[100]!,
-      enabled: true,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Column(
-                children: [
-                  Row(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [Colors.green.shade400, Colors.green.shade600],
+                  ),
+                ),
+                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                child: Shimmer.fromColors(
+                  baseColor: Colors.white.withOpacity(0.3),
+                  highlightColor: Colors.white.withOpacity(0.7),
+                  child: Column(
                     children: [
-                      Expanded(
-                        child: FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: LineWidget(width: 10),
+                      Icon(
+                        Icons.person,
+                        color: Colors.white,
+                        size: 50,
+                      ),
+                      SizedBox(height: 12),
+                      Container(
+                        width: 150,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
                         ),
                       ),
                     ],
                   ),
-                  Padding(padding: EdgeInsets.only(top: 8 * 3.0)),
-                  RawMaterialButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    fillColor: Colors.white,
-                    onPressed: () {},
-                    // elevation: 15,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Card(
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16)),
+              child: Shimmer.fromColors(
+                baseColor: Colors.grey[300]!,
+                highlightColor: Colors.grey[100]!,
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              FittedBox(
-                                fit: BoxFit.scaleDown,
-                                child: Text(
-                                  'كود المستخدم',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 35),
-                                ),
-                              )
-                            ],
+                          Icon(
+                            Icons.badge,
+                            color: Colors.grey.shade700,
+                            size: 28,
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: LineWidget(width: 5),
-                                ),
-                              ),
-                            ],
+                          SizedBox(width: 8),
+                          Text(
+                            'كود المستخدم',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 28,
+                                color: Colors.grey.shade700),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 12),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade100,
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: Colors.grey.shade300),
+                        ),
+                        child: Container(
+                          width: 120,
+                          height: 24,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade400,
+                            borderRadius: BorderRadius.circular(4),
                           ),
-                          Padding(padding: EdgeInsets.only(top: 8)),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              GestureDetector(
-                                onTapDown: (_) {},
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.copy,
-                                      size: 25,
-                                    ),
-                                    Padding(padding: EdgeInsets.only(left: 8)),
-                                    LineWidget(width: 10),
-                                  ],
-                                ),
-                              ),
-                            ],
+                        ),
+                      ),
+                      SizedBox(height: 16),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.copy,
+                              size: 28,
+                            ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Visibility(
-                                visible: true,
-                                child: Expanded(
-                                  child: GestureDetector(
-                                    onTapDown: (_) {},
-                                    child: FittedBox(
-                                      fit: BoxFit.scaleDown,
-                                      child: Row(
-                                        children: [
-                                          Icon(
-                                            Icons.share,
-                                            size: 25,
-                                          ),
-                                          Padding(
-                                              padding:
-                                                  EdgeInsets.only(left: 8)),
-                                          LineWidget(width: 10),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.share,
+                              size: 28,
+                            ),
                           ),
                         ],
                       ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  child: Card(
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Colors.green.shade400, Colors.green.shade600],
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.white.withOpacity(0.3),
+                        highlightColor: Colors.white.withOpacity(0.7),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.local_fire_department,
+                              color: Colors.white,
+                              size: 32,
+                            ),
+                            SizedBox(height: 6),
+                            Container(
+                              width: 60,
+                              height: 16,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                            ),
+                            SizedBox(height: 2),
+                            Container(
+                              width: 40,
+                              height: 32,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                            ),
+                            SizedBox(height: 2),
+                            Container(
+                              width: 30,
+                              height: 12,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                ],
-              ),
-              Padding(padding: EdgeInsets.all(10)),
-              Container(
-                child: ButtonTheme(
-                  height: 50,
-                  // ignore: deprecated_member_use
-                  child: RawMaterialButton(
+                ),
+                SizedBox(width: 8),
+                Expanded(
+                  child: Card(
+                    elevation: 4,
                     shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    fillColor: Colors.grey,
-                    onPressed: () async {},
-                    child: Center(
-                        child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: AutoSizeText(
-                        AppLocalizations.of(context).logout,
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        gradient: LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Colors.amber.shade400, Colors.amber.shade700],
+                        ),
                       ),
-                    )),
+                      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                      child: Shimmer.fromColors(
+                        baseColor: Colors.white.withOpacity(0.3),
+                        highlightColor: Colors.white.withOpacity(0.7),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.emoji_events,
+                              color: Colors.white,
+                              size: 32,
+                            ),
+                            SizedBox(height: 6),
+                            Container(
+                              width: 60,
+                              height: 16,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                            ),
+                            SizedBox(height: 2),
+                            Container(
+                              width: 40,
+                              height: 32,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                            ),
+                            SizedBox(height: 2),
+                            Container(
+                              width: 30,
+                              height: 12,
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              Padding(padding: EdgeInsets.all(10)),
-              Container(
-                child: ButtonTheme(
-                  height: 50,
-                  // ignore: deprecated_member_use
-                  child: RawMaterialButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    fillColor: Colors.red.shade600,
-                    onPressed: () async {},
-                    child: Center(
-                        child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: AutoSizeText(
-                        "مسح الحساب",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    )),
+              ],
+            ),
+            SizedBox(height: 16),
+            Container(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.grey.shade600,
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
                   ),
+                  elevation: 2,
+                ),
+                onPressed: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.logout, size: 24),
+                    SizedBox(width: 8),
+                    AutoSizeText(
+                      AppLocalizations.of(context).logout,
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+            SizedBox(height: 12),
+            Container(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red.shade600,
+                  foregroundColor: Colors.white,
+                  padding: EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  elevation: 2,
+                ),
+                onPressed: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.delete_forever, size: 24),
+                    SizedBox(width: 8),
+                    AutoSizeText(
+                      "مسح الحساب",
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-      ),
-    );
-  }
-}
-
-/*
- Widget that represents the lines Loading in the widget.
-  */
-class LineWidget extends StatelessWidget {
-  final double width;
-
-  LineWidget({required this.width});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: MediaQuery.of(context).size.height / 80,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.black,
-        boxShadow: [
-          BoxShadow(color: Colors.black, spreadRadius: 0.2),
-        ],
       ),
     );
   }

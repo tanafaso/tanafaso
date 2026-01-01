@@ -69,6 +69,120 @@ class _DoGlobalChallengeScreenState extends State<DoGlobalChallengeScreen>
             Center(
               child: Column(
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 4),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'التقدم',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.grey.shade700,
+                              ),
+                            ),
+                            Text(
+                              '${widget.globalChallenge.challenge.azkarChallenge!.subChallenges.where((s) => s.done()).length}/${widget.globalChallenge.challenge.azkarChallenge!.subChallenges.length}',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.green.shade700,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 6),
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: LinearProgressIndicator(
+                            value: widget.globalChallenge.challenge.azkarChallenge!.subChallenges.isEmpty
+                                ? 0
+                                : widget.globalChallenge.challenge.azkarChallenge!.subChallenges.where((s) => s.done()).length /
+                                    widget.globalChallenge.challenge.azkarChallenge!.subChallenges.length,
+                            backgroundColor: Colors.grey.shade300,
+                            valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                            minHeight: 12,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+                    child: Card(
+                      color: Colors.green.shade50,
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.public, color: Colors.green, size: 30),
+                                SizedBox(width: 8),
+                                Expanded(
+                                  child: Text(
+                                    'تحدي مشترك لجميع مستخدمي التطبيق',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.green.shade800,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              'عدد المرات التي تم إنهاء هذا التحدي: ${ArabicUtils.englishToArabic(widget.globalChallenge.finishedCount.toString())} 🎉',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.green.shade700,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(height: 4),
+                            Text(
+                              'يمكنك إنهاء هذا التحدي أكثر من مرة!',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey.shade700,
+                                fontStyle: FontStyle.italic,
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                            Visibility(
+                              visible: ((widget.globalChallenge.challenge.azkarChallenge?.motivation ?? "").isNotEmpty),
+                              child: Column(
+                                children: [
+                                  Divider(),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.directions_run, color: Colors.green),
+                                      SizedBox(width: 8),
+                                      Expanded(
+                                        child: AutoSizeText(
+                                          widget.globalChallenge.challenge.azkarChallenge?.motivation ?? "",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(fontSize: 20),
+                                          maxLines: 3,
+                                          minFontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                   Expanded(
                     child: ListView.separated(
                       padding: EdgeInsets.all(4),
@@ -79,14 +193,14 @@ class _DoGlobalChallengeScreenState extends State<DoGlobalChallengeScreen>
                       separatorBuilder: (BuildContext context, int index) =>
                           Padding(padding: EdgeInsets.only(bottom: 4)),
                       itemBuilder: (context, index) {
-                        return DoAzkarChallengeListItemWidget(
-                          key: UniqueKey(),
-                          keepAlive: false,
-                          subChallenge: widget.globalChallenge.challenge
-                              .azkarChallenge!.subChallenges[index],
-                          challenge:
-                              widget.globalChallenge.challenge.azkarChallenge!,
-                          callback: (SubChallenge newSubChallenge) async {
+                          return DoAzkarChallengeListItemWidget(
+                            key: UniqueKey(),
+                            keepAlive: false,
+                            subChallenge: widget.globalChallenge.challenge
+                                .azkarChallenge!.subChallenges[index],
+                            challenge:
+                                widget.globalChallenge.challenge.azkarChallenge!,
+                            callback: (SubChallenge newSubChallenge) async {
                             widget.globalChallenge.challenge.azkarChallenge!
                                 .subChallenges[index] = newSubChallenge;
                             if (newSubChallenge.done()) {

@@ -56,80 +56,144 @@ class _UserProgressWidgetState extends State<UserProgressWidget>
           if (snapshot.connectionState == ConnectionState.done &&
               !snapshot.hasError) {
             animationController.forward();
+
             return Padding(
-              padding: const EdgeInsets.only(
-                  left: 16.0, right: 16.0, top: 8.0, bottom: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Flexible(
-                    flex: 1,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Text(
-                            'المواظبة',
-                            maxLines: 1,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 40,
-                            ),
+                  Expanded(
+                    child: Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [Colors.green.shade400, Colors.green.shade600],
                           ),
                         ),
-                        FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Directionality(
-                            textDirection: TextDirection.ltr,
-                            // ignore: missing_required_param
-                            child: SlideOdometerTransition(
-                              letterWidth: 30,
-                              odometerAnimation: consecutiveDaysAnimation,
-                              numberTextStyle: const TextStyle(
-                                fontSize: 45,
-                                color: Colors.green,
-                                fontWeight: FontWeight.bold,
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.local_fire_department,
+                              color: Colors.white,
+                              size: 28,
+                            ),
+                            SizedBox(height: 6),
+                            FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                'المواظبة',
+                                maxLines: 1,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
-                          ),
+                            SizedBox(height: 2),
+                            FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Directionality(
+                                textDirection: TextDirection.ltr,
+                                child: SlideOdometerTransition(
+                                  letterWidth: 28,
+                                  odometerAnimation: consecutiveDaysAnimation,
+                                  numberTextStyle: const TextStyle(
+                                    fontSize: 36,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 2),
+                            Text(
+                              'يوم',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white70,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
-                  Padding(padding: EdgeInsets.only(left: 16)),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Text(
-                            'الإنجازات',
-                            maxLines: 1,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 40,
-                            ),
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: Card(
+                      elevation: 4,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          gradient: LinearGradient(
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                            colors: [Colors.amber.shade400, Colors.amber.shade700],
                           ),
                         ),
-                        FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Directionality(
-                            textDirection: TextDirection.ltr,
-                            child: SlideOdometerTransition(
-                              letterWidth: 30,
-                              odometerAnimation: finishedCountAnimation,
-                              numberTextStyle: const TextStyle(
-                                fontSize: 45,
-                                color: Colors.green,
-                                fontWeight: FontWeight.bold,
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.emoji_events,
+                              color: Colors.white,
+                              size: 28,
+                            ),
+                            SizedBox(height: 6),
+                            FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text(
+                                'الإنجازات',
+                                maxLines: 1,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
-                          ),
+                            SizedBox(height: 2),
+                            FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Directionality(
+                                textDirection: TextDirection.ltr,
+                                child: SlideOdometerTransition(
+                                  letterWidth: 28,
+                                  odometerAnimation: finishedCountAnimation,
+                                  numberTextStyle: const TextStyle(
+                                    fontSize: 36,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 2),
+                            Text(
+                              'تحدي',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white70,
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ],
