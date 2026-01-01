@@ -38,10 +38,9 @@ public class CategoriesCacher {
 
     HashMap<Integer, Zekr> zekrIdToZekr = getAzkar();
 
-    try {
-      CSVReader csvReader =
-          new CSVReader(
-              new InputStreamReader(new ClassPathResource(categoriesFile).getInputStream()));
+    try (CSVReader csvReader =
+        new CSVReader(
+            new InputStreamReader(new ClassPathResource(categoriesFile).getInputStream()))) {
       String[] values;
       while ((values = csvReader.readNext()) != null) {
         if (values.length < 2) {
