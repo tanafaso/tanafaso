@@ -26,7 +26,7 @@ jobs:
       
       - name: Check for resource leaks and code issues
         run: |
-          docker compose -f docker-compose-test.yml run --rm tanafaso-test mvn compile -Dmaven.compiler.showWarnings=true 2>&1 | tee compile.log
+          docker compose -f docker-compose-test.yml run --rm tanafaso-test ./mvnw compile -Dmaven.compiler.showWarnings=true 2>&1 | tee compile.log
           if grep -i "resource leak" compile.log; then
             echo "❌ Resource leaks detected!"
             exit 1
