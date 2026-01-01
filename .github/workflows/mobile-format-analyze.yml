@@ -1,0 +1,28 @@
+name: Mobile - Code Formatter and Analyzer
+
+on:
+  pull_request:
+    paths:
+      - 'mobile/**'
+  push:
+    branches:
+      - master
+    paths:
+      - 'mobile/**'
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: subosito/flutter-action@v1
+      with:
+        flutter-version: '2.5.3'
+        channel: 'stable'
+    
+    - run: flutter format --set-exit-if-changed .
+    - run: flutter analyze .

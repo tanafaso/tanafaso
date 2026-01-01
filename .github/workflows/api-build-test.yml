@@ -1,20 +1,28 @@
-name: Build, Test & Package
+name: API - Build, Test & Package
 
 on:
   push:
-      branches:
-        - master
+    branches:
+      - master
+    paths:
+      - 'api/**'
   pull_request:
-      branches:
-        - master
+    branches:
+      - master
+    paths:
+      - 'api/**'
+      
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: api
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      
       - name: Run Mongo DB
         run: docker compose -f docker-compose-test.yml up -d mongo
+        
       - name: Test & Package Tanafaso
         run: docker compose -f docker-compose-test.yml up tanafaso-test
