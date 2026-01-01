@@ -1,98 +1,357 @@
 <!doctype html>
 
-<html lang="en">
+<html lang="ar" dir="rtl">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>تنافسوا</title>
-  <meta name="description" content="A simple HTML5 Template for new projects.">
-  <meta name="author" content="SitePoint">
+  <title>تنافسوا - تطبيق التنافس في ذكر الله</title>
+  <meta name="description" content="تطبيق تنافسوا - تنافسوا في ذكر الله">
+  <meta name="author" content="Tanafaso">
 
-  <link rel="icon" href="https://www.tanafaso.com/images/icon.png">
+  <link rel="icon" href="/images/icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
 <style>
-  .content {
-    max-width: 500px;
-    margin: auto;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
-  a {font-size: 20px}
+  body {
+    font-family: 'Tajawal', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #cff5cf 0%, #a8e6a8 100%);
+    min-height: 100vh;
+    padding: 0;
+    line-height: 1.8;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #cff5cf 0%, #a8e6a8 100%);
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .logo {
+    max-width: 180px;
+    height: auto;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+  }
+
+  .hero-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #2d8a2d;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .hero-subtitle {
+    font-size: 22px;
+    color: #3a7a3a;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .store-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+  }
+
+  .store-button {
+    display: inline-block;
+    transition: transform 0.2s ease;
+  }
+
+  .store-button img {
+    height: 60px;
+    width: 180px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+  }
+
+  .store-button:hover {
+    transform: translateY(-3px);
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: -40px auto 0;
+    background: white;
+    border-radius: 30px 30px 0 0;
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+    padding: 60px 40px 40px;
+  }
+
+  .section {
+    margin-bottom: 50px;
+  }
+
+  .section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2d8a2d;
+    margin-bottom: 25px;
+    text-align: right;
+    position: relative;
+    padding-bottom: 15px;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #4db84d, transparent);
+    border-radius: 2px;
+  }
+
+  .intro-text {
+    font-size: 19px;
+    text-align: right;
+    color: #444;
+    line-height: 2;
+    margin-bottom: 20px;
+  }
+
+  .verse {
+    background: linear-gradient(135deg, #f0fdf0 0%, #e8f5e8 100%);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: right;
+    font-size: 20px;
+    color: #2d8a2d;
+    line-height: 2.2;
+    margin: 40px 0;
+    border-right: 5px solid #4db84d;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(77, 184, 77, 0.1);
+  }
+
+  .verse-reference {
+    display: block;
+    font-size: 15px;
+    color: #666;
+    margin-top: 15px;
+    font-weight: 400;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+  }
+
+  .feature-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f9fef9 100%);
+    padding: 25px;
+    border-radius: 15px;
+    text-align: right;
+    border: 2px solid #e8f5e8;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(180deg, #4db84d, #7cd67c);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(77, 184, 77, 0.15);
+    border-color: #4db84d;
+  }
+
+  .feature-number {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #4db84d, #7cd67c);
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    float: right;
+    margin-left: 15px;
+  }
+
+  .feature-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #2d8a2d;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .feature-description {
+    color: #555;
+    font-size: 17px;
+    line-height: 1.9;
+    clear: both;
+  }
+
+  .footer {
+    background: #2d3748;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .privacy-link {
+    color: #cff5cf;
+    text-decoration: none;
+    font-size: 17px;
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 8px;
+  }
+
+  .privacy-link:hover {
+    background: rgba(207, 245, 207, 0.1);
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 40px 20px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+    }
+
+    .container {
+      padding: 40px 25px 30px;
+      margin-top: -30px;
+      border-radius: 25px 25px 0 0;
+    }
+
+    .section-title {
+      font-size: 24px;
+    }
+
+    .intro-text {
+      font-size: 17px;
+    }
+
+    .verse {
+      font-size: 18px;
+      padding: 25px;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+
+    .store-buttons {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .store-button img {
+      height: 55px;
+    }
+  }
 </style>
 
 <body>
-  <div class="content">
-    <center>
-    <img src="https://www.tanafaso.com/images/logo.png" alt="Logo" width="200">
-    </center>
+  <div class="hero">
+    <img src="/images/logo.png" alt="Logo تنافسوا" class="logo">
+    <h1 class="hero-title">تنافسوا</h1>
+    <p class="hero-subtitle">تطبيق يساعد الأقارب والأصدقاء على أن يشجع بعضهم بعضًا على ذكر الله</p>
+    
+    <div class="store-buttons">
+      <a href='https://play.google.com/store/apps/details?id=com.tanafaso.azkar&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1' class="store-button">
+        <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' />
+      </a>
+      <a href="https://apps.apple.com/us/app/%D8%AA%D9%86%D8%A7%D9%81%D8%B3%D9%88%D8%A7/id1564309117?itsct=apps_box_badge&amp;itscg=30200" class="store-button">
+        <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/en-us?size=250x83&amp;releaseDate=1620432000&h=6f3a2d894063569eab9e97c5692dfd2d" alt="Download on the App Store" style="border-radius: 13px;">
+      </a>
+    </div>
+  </div>
 
-    <p align="right" style="width: 500px;">
-      </pstyle> تطبيق تنافسوا يساعد الأقارب والأصدقاء على أن يشجع بعضهم بعضا على ذكر الله.
-<br>
-<br>
-      يتنافس الإنسان على مدار يومه مع نفسه وأقرانه لكي يرفع مستواه المادي أو الاجتماعي في الدنيا، ولكن نادراً ما يتنافس
-      مع
-      أحد حتى يرفع درجاته في جنات النعيم. فلما لا نتنافس مع من نحب في ذكر الله فترتفع درجاتنا وتطمئن قلوبنا. (الَّذِينَ
-      آمَنُواْ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ اللَّهِ أَلاَ بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ)الرعد ٢٨
-
-<br>
-<br>
-      .حاليًا، هناك ثلاث طرق يمكنك من خلالها تحدي أصدقائك باستخدام التطبيق
-<br>
-      <b>
-      ١- قراءة أذكار
-      </b>
-      يمكنك اختيار مجموعة من الأذكار وتكرار كل ذِكر وتحدى نفسك و بعض أصدقائك أن يقرؤوها.
-
-<br>
-<br>
-      <b>
-      ٢- معاني كلمات القرآن
-      </b>
-      تحدى نفسك و بعض أصدقائك أن يختاروا المعاني الصحيحة لعدد معين من كلمات القرآن الكريم.
-
-<br>
-<br>
-      <b>
-      ٣- قراءة قرآن
-      </b>
-      تحدى نفسك وبعض أصدقائك أن يقرؤوا بعض آيات القرآن الكريم.
-
-<br>
-<br>
-      يمكن إضافة أصدقاء بأكثر من طريقة.
-      <br>
-      ١- عن طريق الفيسبوك. في صفحة للأصدقاء. يمكنك ضغط على زر علامة الزائد، ثم الضغط على أضف صديق. ثم فيسبوك.
-      <br>
-      ٢- يمكنك مشاركة التطبيق وكود المستخدم الخاص بك مع أصدقائك من خلال الذهاب لصفحة الأصدقاء ثم ضغط زر الزائد ثم الضغط
-      على زر المشاركة.
-<br>
-<br>
-      ٣- إذا كنت تعرف كود المستخدم الخاص بصديق، يمكنك الذهاب لصفحة الأصدقاء ثم ضغط زر الزائد ثم ضغط زر الإضافة ثم إدخال
-      كود المستخدم الخاص بصديقك وسيتم إرسال طلب صداقة له.
-
-<br>
-      يمكنك إيجاد كود المستخدم الخاص بك في صفحة الملف الشخصي تحت الإسم.
+  <div class="container">
+    <div class="section">
+      <p class="intro-text">
+        يتنافس الإنسان على مدار يومه مع نفسه وأقرانه لكي يرفع مستواه المادي أو الاجتماعي في الدنيا، ولكن نادرًا ما يتنافس مع أحد حتى يرفع درجاته في جنات النعيم. فلِمَ لا نتنافس مع من نحب في ذكر الله فترتفع درجاتنا وتطمئن قلوبنا؟
       </p>
 
-    <center>
-    <a
-        href='https://www.tanafaso.com/privacy-policy'
-        alt='Privacy Policy'
-        height="400"/>Privacy Policy Link</a>
-    <a
-      href='https://play.google.com/store/apps/details?id=com.tanafaso.azkar&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img
-        alt='Get it on Google Play'
-        src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'
-        height="200" /></a>
-    <a href="https://apps.apple.com/us/app/%D8%AA%D9%86%D8%A7%D9%81%D8%B3%D9%88%D8%A7/id1564309117?itsct=apps_box_badge&amp;itscg=30200"
-      style="display: inline-block; overflow: hidden; border-radius: 13px;"><img
-        src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/white/en-us?size=250x83&amp;releaseDate=1620432000&h=6f3a2d894063569eab9e97c5692dfd2d"
-        alt="Download on the App Store" style="border-radius: 13px;" height="100"></a>
-    </center>
-    <script src="js/scripts.js"></script>
+      <div class="verse">
+        الَّذِينَ آمَنُواْ وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ اللَّهِ أَلاَ بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ
+        <span class="verse-reference">سورة الرعد - آية ٢٨</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">طرق التحدي في التطبيق</h2>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-number">١</div>
+          <h3 class="feature-title">قراءة أذكار</h3>
+          <p class="feature-description">
+            يمكنك اختيار مجموعة من الأذكار وتكرار كل ذِكر وتحدي نفسك وبعض أصدقائك أن يقرؤوها
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-number">٢</div>
+          <h3 class="feature-title">معاني كلمات القرآن</h3>
+          <p class="feature-description">
+            تحدَّ نفسك وبعض أصدقائك أن يختاروا المعاني الصحيحة لعدد معين من كلمات القرآن الكريم
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-number">٣</div>
+          <h3 class="feature-title">قراءة قرآن</h3>
+          <p class="feature-description">
+            تحدَّ نفسك وبعض أصدقائك أن يقرؤوا بعض آيات القرآن الكريم
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-number">٤</div>
+          <h3 class="feature-title">حفظ القرآن</h3>
+          <p class="feature-description">
+            تحدَّ نفسك وبعض أصدقائك في أسئلة حفظ القرآن الكريم واختبر مدى حفظكم
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href='https://www.tanafaso.com/privacy-policy' class="privacy-link">سياسة الخصوصية</a>
   </div>
 </body>
 

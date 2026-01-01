@@ -13,3 +13,5 @@ firebase-key.json
 feedback.csv
 Dockerfile
 deployCommand.txt
+deploy.sh
+tanafaso-cloud-run-service.yaml
