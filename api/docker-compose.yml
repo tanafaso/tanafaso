@@ -1,0 +1,37 @@
+version: '3.7'
+
+services:
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: tanafaso-db-username
+      MONGO_INITDB_ROOT_PASSWORD: tanafaso-db-password
+      MONGO_INITDB_DATABASE: tanafaso
+      MONGO_DB_USERNAME: tanafaso-db-username
+      MONGO_DB_PASSWORD: tanafaso-db-password
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+  tanafaso-server:
+    depends_on:
+      - "mongo"
+    build:
+      dockerfile: Dockerfile-Run
+    ports:
+      - 8080:8080
+    environment:
+      DATABASE_URI: mongodb://tanafaso-db-username:tanafaso-db-password@mongo:27017/tanafaso
+      SERVER_PORT: 8080
+      JWT_SECRET: example-secret
+      LOGS_PATH: ./logs
+      MAIL_HOST: smtp.gmail.com
+      MAIL_USERNAME: example@example.com
+      MAIL_PASSWORD: example-mail-password
+      MAIL_PORT: 587
+      APPLE_TEAM_ID: example-apple-team-id
+      APPLE_SIGN_IN_KEY_ID: example-apple-sign-in-key
+
+volumes:
+  mongodb_data_container:

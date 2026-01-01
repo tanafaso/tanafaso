@@ -1,0 +1,43 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: tanafaso
+  namespace: 'tanafaso'
+  labels:
+    cloud.googleapis.com/location: europe-west1
+  annotations:
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+spec:
+  template:
+    metadata:
+      labels:
+        run.googleapis.com/startupProbeType: Custom
+      annotations:
+        autoscaling.knative.dev/minScale: '1'
+        autoscaling.knative.dev/maxScale: '1'
+        run.googleapis.com/startup-cpu-boost: 'true'
+    spec:
+      containerConcurrency: 60
+      timeoutSeconds: 15
+      containers:
+        - name: tanafaso-1
+          image: europe-west1-docker.pkg.dev/tanafaso/tanafaso/tanafaso:randomtag00010272
+          ports:
+            - name: http1
+              containerPort: 443
+          resources:
+            limits:
+              cpu: 1000m
+              memory: 1Gi
+          startupProbe:
+            initialDelaySeconds: 8
+            timeoutSeconds: 1
+            periodSeconds: 5
+            failureThreshold: 15
+            httpGet:
+              path: /
+              port: 443
+  traffic:
+    - percent: 100
+      latestRevision: true

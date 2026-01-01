@@ -1,0 +1,16 @@
+# These configurations are used by the tests.
+# Note: The tests will also inherit the configurations that are not set here but set in
+# application.yml
+
+app.jwtSecret: secret_test
+
+spring:
+  data.mongodb:
+    auto-index-creation: true
+
+files:
+  azkar: test-azkar.csv
+  categories: test-categories.csv
+  tafseer: tafseer.txt
+  quran-metadata: quran_metadata.csv
+  apple_auth_private_key: sign_in_with_apple_auth_key

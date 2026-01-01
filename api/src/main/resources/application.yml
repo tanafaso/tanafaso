@@ -1,0 +1,33 @@
+debug: true
+app:
+  jwtSecret: ${JWT_SECRET}
+  version: 1.10.0
+
+org:
+  springframework:
+    web:
+      filter:
+        CommonsRequestLoggingFilter: DEBUG
+
+server:
+  port: ${SERVER_PORT}
+
+spring:
+  main:
+    lazy-initialization: true
+  data.mongodb:
+    auto-index-creation: true
+    uri: ${DATABASE_URI}
+  http:
+    log-request-details: true
+  resources.add-mappings: false
+  mvc.throw-exception-if-no-handler-found: true
+
+files:
+  azkar: azkar.csv
+  categories: categories.csv
+  tafseer: tafseer.txt
+  quran-metadata: quran_metadata.csv
+  apple_auth_private_key: sign_in_with_apple_auth_key
+
+job-mode: false

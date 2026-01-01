@@ -1,0 +1,62 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ar" class="h-100">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tanafaso</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap"
+        rel="stylesheet">
+  <style>
+         .bd-placeholder-img {
+         font-size: 1.125rem;
+         text-anchor: middle;
+         -webkit-user-select: none;
+         -moz-user-select: none;
+         user-select: none;
+         }
+         @media (min-width: 768px) {
+         .bd-placeholder-img-lg {
+         font-size: 3.5rem;
+         }
+         }
+         h2 {
+         text-align:center;
+         font-family: 'Cairo', sans-serif;
+         direction: rtl;
+         }
+         body {
+         height: 100%;
+         }
+         body {
+         display: flex;
+         align-items: center;
+         padding-top: 40px;
+         padding-bottom: 40px;
+         background-color: #f5f5f5;
+         }
+         .body-style {
+         width: 100%;
+         max-width: 500px;
+         padding: 15px;
+         margin: auto;
+         }
+         .text-center{
+         text-align:center
+         }
+      </style>
+</head>
+<body class="text-center">
+<main class="body-style">
+  <svg id="Layer_1" width="144" height="114" style="enable-background:new 0 0 612 792;" version="1.1"
+       viewBox="0 0 612 792" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <style type="text/css">
+               .st0{fill:#41AD49;}
+            </style>
+    <g>
+               <path class="st0" d="M562,396c0-141.4-114.6-256-256-256S50,254.6,50,396s114.6,256,256,256S562,537.4,562,396L562,396z    M501.7,296.3l-241,241l0,0l-17.2,17.2L110.3,421.3l58.8-58.8l74.5,74.5l199.4-199.4L501.7,296.3L501.7,296.3z"/>
+            </g>
+         </svg>
+  <h2 th:text="${successMessage}"></h2>
+</main>
+</body>
+</html>
