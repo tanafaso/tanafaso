@@ -67,7 +67,7 @@ class SelectCategoryScreen extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (context) => WriteZekrScreen()))
                           as List<SubChallenge>;
-                  if ((selectedSubChallenges.length ?? 0) != 0) {
+                  if (selectedSubChallenges.length != 0) {
                     Navigator.pop(context, selectedSubChallenges);
                   }
                 },
@@ -106,7 +106,7 @@ class SelectCategoryScreen extends StatelessWidget {
                                       builder: (context) => SelectAzkarScreen(
                                             azkar: categories[index].azkar,
                                           ))) as List<SubChallenge>;
-                          if ((selectedSubChallenges.length ?? 0) != 0) {
+                          if (selectedSubChallenges.length != 0) {
                             Navigator.pop(context, selectedSubChallenges);
                           }
                         },

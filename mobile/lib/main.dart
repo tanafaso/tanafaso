@@ -47,11 +47,10 @@ class _MyAppState extends State<MyApp> {
   Widget? _landingWidget;
   late String _azkarAndQuranFontFamily;
   late String _nonAzkarAndNonQuranFontFamily;
-  late FirebaseApp _firebaseApp;
 
   Future<void> asyncInitialization(BuildContext context) async {
     try {
-      _firebaseApp = await Firebase.initializeApp(
+      await Firebase.initializeApp(
           options: DefaultFirebaseOptions.currentPlatform);
     } catch (e) {
       print(e);

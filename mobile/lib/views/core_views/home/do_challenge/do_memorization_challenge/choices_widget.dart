@@ -3,9 +3,9 @@ import 'package:azkar/views/core_views/home/do_challenge/do_memorization_challen
 import 'package:flutter/material.dart';
 
 class ChoicesWidget extends StatelessWidget {
-  late List<Choice> choices;
-  late MemorizationChallengeStepDoneCallback onCorrectChoiceSelected;
-  late ScrollController scrollController;
+  final List<Choice> choices;
+  final MemorizationChallengeStepDoneCallback onCorrectChoiceSelected;
+  final ScrollController scrollController;
 
   ChoicesWidget({
     required this.choices,

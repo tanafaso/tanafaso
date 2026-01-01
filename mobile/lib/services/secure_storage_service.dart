@@ -64,9 +64,7 @@ class SecureStorageService {
         aOptions: _getAndroidOptions());
   }
 
-  AndroidOptions _getAndroidOptions() => const AndroidOptions(
-        encryptedSharedPreferences: true,
-      );
+  AndroidOptions _getAndroidOptions() => const AndroidOptions();
 
   Future<void> setAppleIdEmail(String email) async {
     final _storage = FlutterSecureStorage();
@@ -132,6 +130,6 @@ class SecureStorageService {
     } catch (e) {
       return false;
     }
-    return (token.length ?? 0) != 0;
+    return token.length != 0;
   }
 }

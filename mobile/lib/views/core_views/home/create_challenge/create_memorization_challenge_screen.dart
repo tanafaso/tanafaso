@@ -625,7 +625,7 @@ class _CreateMemorizationChallengeScreenState
   }
 
   bool readyToFinishChallenge(bool showWarnings) {
-    if ((_selectedFriends.length ?? 0) == 0) {
+    if (_selectedFriends.length == 0) {
       return false;
     }
     if (_mode == Mode.JUZ_SELECTION) {

@@ -13,7 +13,7 @@ class LiveSupportScreen extends StatefulWidget {
 
 class _LiveSupportScreenState extends State<LiveSupportScreen>
     with SingleTickerProviderStateMixin {
-  late CrispMain crispMain;
+  CrispMain? crispMain;
 
   AnimationController? _loadingAnimationController;
 
@@ -39,14 +39,14 @@ class _LiveSupportScreenState extends State<LiveSupportScreen>
         userToken: sha512.convert(utf8.encode(_userId)).toString(),
       );
 
-      crispMain.register(
+      crispMain!.register(
         user: CrispUser(
           nickname: _userFullName,
           email: _userEmail,
         ),
       );
 
-      crispMain.setSessionData({
+      crispMain!.setSessionData({
         "app_version": ApiCaller.API_VERSION,
       });
 
@@ -56,8 +56,8 @@ class _LiveSupportScreenState extends State<LiveSupportScreen>
 
   @override
   Widget build(BuildContext context) {
-    return crispMain == null
-        ? SafeArea(
+    if (crispMain == null) {
+      return SafeArea(
             child: Center(
               child: RotationTransition(
                 child: Image.asset('assets/images/logo.png'),
@@ -65,12 +65,14 @@ class _LiveSupportScreenState extends State<LiveSupportScreen>
                     .animate(_loadingAnimationController!),
               ),
             ),
-          )
-        : SafeArea(
+          );
+    } else {
+      return SafeArea(
             child: CrispView(
-              crispMain: crispMain,
+              crispMain: crispMain!,
             ),
           );
+    }
   }
 
   @override

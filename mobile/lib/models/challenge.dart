@@ -99,7 +99,6 @@ class Challenge {
       case ChallengeType.OTHER:
         return null;
     }
-    return null;
   }
 
   String? getGroupId() {
@@ -117,7 +116,6 @@ class Challenge {
       case ChallengeType.OTHER:
         return null;
     }
-    return null;
   }
 
   String? getName() {
@@ -135,7 +133,6 @@ class Challenge {
       case ChallengeType.OTHER:
         return null;
     }
-    return null;
   }
 
   bool done() {
@@ -153,7 +150,6 @@ class Challenge {
       case ChallengeType.OTHER:
         return false;
     }
-    return false;
   }
 
   int getExpiryDate() {
@@ -171,7 +167,6 @@ class Challenge {
       case ChallengeType.OTHER:
         return 0;
     }
-    return 0;
   }
 
   bool deadlinePassed() {
@@ -211,7 +206,7 @@ class Challenge {
   List<String> getUsersFinishedIds() {
     switch (challengeType) {
       case ChallengeType.AZKAR:
-        return azkarChallenge!.usersFinished ?? [];
+        return azkarChallenge!.usersFinished;
       case ChallengeType.MEANING:
         return meaningChallenge!.usersFinished ?? [];
       case ChallengeType.READING_QURAN:
@@ -223,7 +218,6 @@ class Challenge {
       case ChallengeType.OTHER:
         return [];
     }
-    return [];
   }
 
   String? creatingUserId() {
@@ -241,6 +235,5 @@ class Challenge {
       case ChallengeType.OTHER:
         return null;
     }
-    return null;
   }
 }

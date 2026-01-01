@@ -74,57 +74,47 @@ class _DoMemorizationChallengeScreenState
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Card(
-                    child: Visibility(
-                      visible: widget.group != null,
-                      child: widget.group == null
-                          ? Container()
-                          : ExpansionTile(
-                              key: GlobalKey(),
-                              title: Text(
-                                "الأصدقاء",
-                                style: TextStyle(
-                                    fontSize: _friendsTileExpanded! ? 25 : 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              initiallyExpanded: _friendsTileExpanded!,
-                              backgroundColor:
-                                  Theme.of(context).colorScheme.secondary,
-                              collapsedBackgroundColor:
-                                  Theme.of(context).colorScheme.secondary,
-                              textColor: Colors.black,
-                              iconColor: Colors.black,
-                              collapsedTextColor: Colors.black,
-                              collapsedIconColor: Colors.black,
-                              trailing: Icon(
-                                _friendsTileExpanded!
-                                    ? Icons.arrow_drop_up
-                                    : Icons.arrow_drop_down,
-                                size: 30,
-                              ),
-                              onExpansionChanged: (bool expanded) {
-                                setState(() => _friendsTileExpanded = expanded);
-                              },
-                              children: [
-                                Column(
-                                  children: [
-                                    Visibility(
-                                      visible: widget.group != null,
-                                      child: widget.group == null
-                                          ? Container()
-                                          : FriendsProgressWidget(
-                                              challenge: Challenge(
-                                                  memorizationChallenge:
-                                                      widget.challenge),
-                                              challengedUsersIds:
-                                                  widget.challengedUsersIds,
-                                              challengedUsersFullNames: widget
-                                                  .challengedUsersFullNames,
-                                            ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                    child: ExpansionTile(
+                      key: GlobalKey(),
+                      title: Text(
+                        "الأصدقاء",
+                        style: TextStyle(
+                            fontSize: _friendsTileExpanded! ? 25 : 20,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      initiallyExpanded: _friendsTileExpanded!,
+                      backgroundColor:
+                          Theme.of(context).colorScheme.secondary,
+                      collapsedBackgroundColor:
+                          Theme.of(context).colorScheme.secondary,
+                      textColor: Colors.black,
+                      iconColor: Colors.black,
+                      collapsedTextColor: Colors.black,
+                      collapsedIconColor: Colors.black,
+                      trailing: Icon(
+                        _friendsTileExpanded!
+                            ? Icons.arrow_drop_up
+                            : Icons.arrow_drop_down,
+                        size: 30,
+                      ),
+                      onExpansionChanged: (bool expanded) {
+                        setState(() => _friendsTileExpanded = expanded);
+                      },
+                      children: [
+                        Column(
+                          children: [
+                            FriendsProgressWidget(
+                              challenge: Challenge(
+                                  memorizationChallenge:
+                                      widget.challenge),
+                              challengedUsersIds:
+                                  widget.challengedUsersIds,
+                              challengedUsersFullNames: widget
+                                  .challengedUsersFullNames,
                             ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
                   Padding(

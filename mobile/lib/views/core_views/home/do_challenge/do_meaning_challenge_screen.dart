@@ -141,17 +141,12 @@ class _DoMeaningChallengeScreenState extends State<DoMeaningChallengeScreen>
                       setState(() => _friendsTileExpanded = expanded);
                     },
                     children: [
-                      Visibility(
-                        visible: widget.group != null,
-                        child: widget.group == null
-                            ? Container()
-                            : FriendsProgressWidget(
-                                challenge: Challenge(
-                                    meaningChallenge: widget.challenge),
-                                challengedUsersIds: widget.challengedUsersIds,
-                                challengedUsersFullNames:
-                                    widget.challengedUsersFullNames,
-                              ),
+                      FriendsProgressWidget(
+                        challenge: Challenge(
+                            meaningChallenge: widget.challenge),
+                        challengedUsersIds: widget.challengedUsersIds,
+                        challengedUsersFullNames:
+                            widget.challengedUsersFullNames,
                       ),
                     ],
                   ),

@@ -155,7 +155,6 @@ class _LayoutOrganizerState extends State<LayoutOrganizer>
       case TopicType.SETTINGS:
         return 4;
     }
-    assert(false);
   }
 
   List<Topic> getTopics(BuildContext context) {
@@ -245,7 +244,6 @@ class _LayoutOrganizerState extends State<LayoutOrganizer>
       case TopicType.SETTINGS:
         return SettingsMainScreen();
     }
-    assert(false);
   }
 
   Widget getFeatureDiscoveryWith({
