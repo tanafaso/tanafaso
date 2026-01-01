@@ -23,11 +23,17 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
   late Future<void> _neededData;
   late User _user;
   late bool isIpad;
+  late int _finishedChallengesCount;
+  late int _consecutiveDaysStreak;
 
   Future<void> getNeededData() async {
     isIpad = await _isIpad();
 
     _user = await ServiceProvider.usersService.getCurrentUser();
+    _finishedChallengesCount =
+        await ServiceProvider.challengesService.getFinishedChallengesCount();
+    _consecutiveDaysStreak =
+        await ServiceProvider.challengesService.getConsecutiveDaysStreak();
     print(_user);
   }
 
@@ -55,77 +61,116 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                         children: [
                           Column(
                             children: [
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: FittedBox(
-                                      fit: BoxFit.scaleDown,
-                                      child: Text(
-                                        _user.firstName +
-                                            " " +
-                                            (_user.lastName ?? ""),
-                                        maxLines: 1,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 45,
-                                        ),
-                                      ),
+                              Card(
+                                elevation: 4,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16),
+                                ),
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(16),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [Colors.green.shade400, Colors.green.shade600],
                                     ),
                                   ),
-                                ],
+                                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                                  child: Column(
+                                    children: [
+                                      Icon(
+                                        Icons.person,
+                                        color: Colors.white,
+                                        size: 50,
+                                      ),
+                                      SizedBox(height: 12),
+                                      FittedBox(
+                                        fit: BoxFit.scaleDown,
+                                        child: Text(
+                                          _user.firstName +
+                                              " " +
+                                              (_user.lastName ?? ""),
+                                          maxLines: 1,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 35,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
-                              Padding(padding: EdgeInsets.only(top: 8 * 3.0)),
-                              RawMaterialButton(
+                              SizedBox(height: 16),
+                              Card(
+                                elevation: 3,
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                fillColor: Colors.white,
-                                onPressed: () {},
-                                // elevation: 15,
+                                    borderRadius: BorderRadius.circular(16)),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
+                                  padding: const EdgeInsets.all(20.0),
                                   child: Column(
                                     children: [
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
+                                          Icon(
+                                            Icons.badge,
+                                            color: Colors.grey.shade700,
+                                            size: 28,
+                                          ),
+                                          SizedBox(width: 8),
                                           FittedBox(
                                             fit: BoxFit.scaleDown,
                                             child: Text(
                                               'كود المستخدم',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  fontSize: 35),
+                                                  fontSize: 28,
+                                                  color: Colors.grey.shade700),
                                             ),
                                           )
                                         ],
                                       ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Expanded(
-                                            child: FittedBox(
-                                              fit: BoxFit.scaleDown,
-                                              child: Text(
-                                                _user.username,
-                                                style: TextStyle(
-                                                  fontSize: 30,
-                                                  color: Colors.grey.shade700,
+                                      SizedBox(height: 12),
+                                      Container(
+                                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey.shade100,
+                                          borderRadius: BorderRadius.circular(12),
+                                          border: Border.all(color: Colors.grey.shade300),
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Expanded(
+                                              child: FittedBox(
+                                                fit: BoxFit.scaleDown,
+                                                child: Text(
+                                                  _user.username,
+                                                  style: TextStyle(
+                                                    fontSize: 24,
+                                                    color: Colors.grey.shade800,
+                                                    fontWeight: FontWeight.w600,
+                                                    letterSpacing: 1.2,
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                      Padding(padding: EdgeInsets.only(top: 8)),
+                                      SizedBox(height: 16),
                                       Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          GestureDetector(
-                                            onTapDown: (_) {
+                                          IconButton(
+                                            onPressed: () {
                                               Clipboard.setData(ClipboardData(
                                                 text: _user.username,
                                               )).then((_) {
@@ -135,68 +180,27 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                                                         .usernameCopiedSuccessfully);
                                               });
                                             },
-                                            child: Row(
-                                              children: [
-                                                Icon(
-                                                  Icons.copy,
-                                                  size: 25,
-                                                ),
-                                                Padding(
-                                                    padding: EdgeInsets.only(
-                                                        left: 8)),
-                                                AutoSizeText(
-                                                  'نسخ الكود',
-                                                  style: TextStyle(
-                                                    fontSize: 25,
-                                                    color: Colors.grey.shade700,
-                                                  ),
-                                                ),
-                                              ],
+                                            icon: Icon(
+                                              Icons.copy,
+                                              size: 28,
                                             ),
+                                            tooltip: 'نسخ الكود',
                                           ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Visibility(
-                                            visible: !isIpad,
-                                            child: Expanded(
-                                              child: GestureDetector(
-                                                onTapDown: (_) {
-                                                  Share.share(
-                                                      AppLocalizations.of(
-                                                              context)
-                                                          .shareMessage(
-                                                              _user.username));
-                                                },
-                                                child: FittedBox(
-                                                  fit: BoxFit.scaleDown,
-                                                  child: Row(
-                                                    children: [
-                                                      Icon(
-                                                        Icons.share,
-                                                        size: 25,
-                                                      ),
-                                                      Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  left: 8)),
-                                                      AutoSizeText(
-                                                        'مشاركة الكود مع صديق',
-                                                        style: TextStyle(
-                                                          fontSize: 25,
-                                                          color: Colors
-                                                              .grey.shade700,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
+                                          if (!isIpad)
+                                            IconButton(
+                                              onPressed: () {
+                                                Share.share(
+                                                    AppLocalizations.of(
+                                                            context)
+                                                        .shareMessage(
+                                                            _user.username));
+                                              },
+                                              icon: Icon(
+                                                Icons.share,
+                                                size: 28,
                                               ),
+                                              tooltip: 'مشاركة الكود مع صديق',
                                             ),
-                                          ),
                                         ],
                                       ),
                                     ],
@@ -205,72 +209,210 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                               ),
                             ],
                           ),
-                          Padding(padding: EdgeInsets.all(10)),
-                          Container(
-                            child: ButtonTheme(
-                              height: 50,
-                              // ignore: deprecated_member_use
-                              child: RawMaterialButton(
+                          SizedBox(height: 16),                          Row(
+                            children: [
+                              Expanded(
+                                child: Card(
+                                  elevation: 4,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(16),
+                                      gradient: LinearGradient(
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                        colors: [Colors.green.shade400, Colors.green.shade600],
+                                      ),
+                                    ),
+                                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.local_fire_department,
+                                          color: Colors.white,
+                                          size: 32,
+                                        ),
+                                        SizedBox(height: 6),
+                                        FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            'المواظبة',
+                                            maxLines: 1,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 2),
+                                        FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            _consecutiveDaysStreak.toString(),
+                                            style: TextStyle(
+                                              fontSize: 32,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 2),
+                                        Text(
+                                          'يوم',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.white70,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 8),
+                              Expanded(
+                                child: Card(
+                                  elevation: 4,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(16),
+                                      gradient: LinearGradient(
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                        colors: [Colors.amber.shade400, Colors.amber.shade700],
+                                      ),
+                                    ),
+                                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.emoji_events,
+                                          color: Colors.white,
+                                          size: 32,
+                                        ),
+                                        SizedBox(height: 6),
+                                        FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            'الإنجازات',
+                                            maxLines: 1,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 2),
+                                        FittedBox(
+                                          fit: BoxFit.scaleDown,
+                                          child: Text(
+                                            _finishedChallengesCount.toString(),
+                                            style: TextStyle(
+                                              fontSize: 32,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(height: 2),
+                                        Text(
+                                          'تحدي',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.white70,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 16),                          Container(
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.grey.shade600,
+                                foregroundColor: Colors.white,
+                                padding: EdgeInsets.symmetric(vertical: 14, horizontal: 24),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                fillColor: Colors.grey,
-                                onPressed: () async {
-                                  performLogout(context);
-                                },
-                                child: Center(
-                                    child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: AutoSizeText(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                elevation: 2,
+                              ),
+                              onPressed: () async {
+                                performLogout(context);
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.logout, size: 24),
+                                  SizedBox(width: 8),
+                                  AutoSizeText(
                                     AppLocalizations.of(context).logout,
                                     style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 25,
+                                        fontSize: 22,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                )),
+                                ],
                               ),
                             ),
                           ),
-                          Padding(padding: EdgeInsets.all(10)),
+                          SizedBox(height: 12),
                           Container(
-                            child: ButtonTheme(
-                              height: 50,
-                              // ignore: deprecated_member_use
-                              child: RawMaterialButton(
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red.shade600,
+                                foregroundColor: Colors.white,
+                                padding: EdgeInsets.symmetric(vertical: 14, horizontal: 24),
                                 shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                fillColor: Colors.red.shade600,
-                                onPressed: () async {
-                                  bool deleted =
-                                      await _showDeleteUserAlertDialog(
-                                              context) ??
-                                          false;
-                                  if (deleted) {
-                                    await ServiceProvider.secureStorageService
-                                        .clear();
-                                    await ServiceProvider.cacheManager
-                                        .clearPreferences();
-                                    SnackBarUtils.showSnackBar(
-                                        context, "تم حذف حسابك بنجاح.");
-                                    Navigator.pushAndRemoveUntil(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                new AuthMainScreen()),
-                                        (_) => false);
-                                  }
-                                },
-                                child: Center(
-                                    child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: AutoSizeText(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                elevation: 2,
+                              ),
+                              onPressed: () async {
+                                bool deleted =
+                                    await _showDeleteUserAlertDialog(
+                                            context) ??
+                                        false;
+                                if (deleted) {
+                                  await ServiceProvider.secureStorageService
+                                      .clear();
+                                  await ServiceProvider.cacheManager
+                                      .clearPreferences();
+                                  SnackBarUtils.showSnackBar(
+                                      context, "تم حذف حسابك بنجاح.");
+                                  Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              new AuthMainScreen()),
+                                      (_) => false);
+                                }
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.delete_forever, size: 24),
+                                  SizedBox(width: 8),
+                                  AutoSizeText(
                                     "مسح الحساب",
                                     style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 25,
+                                        fontSize: 22,
                                         fontWeight: FontWeight.bold),
                                   ),
-                                )),
+                                ],
                               ),
                             ),
                           ),
