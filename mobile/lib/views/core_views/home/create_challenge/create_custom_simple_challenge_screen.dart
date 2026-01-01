@@ -225,7 +225,7 @@ class _CreateCustomSimpleChallengeScreenState
   }
 
   bool readyToFinishChallenge(bool showWarnings) {
-    if ((_selectedFriends.length ?? 0) == 0) {
+    if (_selectedFriends.length == 0) {
       return false;
     }
 

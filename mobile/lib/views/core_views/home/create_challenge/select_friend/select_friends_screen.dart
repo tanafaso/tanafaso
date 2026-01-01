@@ -43,8 +43,7 @@ class _SelectFriendsScreenState extends State<SelectFriendsScreen> {
                         context,
                         widget.friends
                                 .where((friend) => !friend.pending)
-                                .toList() ??
-                            []))),
+                                .toList()))),
             Padding(
               padding: const EdgeInsets.only(
                   left: 8.0, right: 8, top: 8, bottom: 3 * 8.0),
@@ -95,7 +94,7 @@ class _SelectFriendsScreenState extends State<SelectFriendsScreen> {
   bool readyToFinish() => _selectedFriends.length != 0;
 
   Widget getFriendsList(BuildContext context, List<Friend> friends) {
-    if (friends.isEmpty ?? false) {
+    if (friends.isEmpty) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

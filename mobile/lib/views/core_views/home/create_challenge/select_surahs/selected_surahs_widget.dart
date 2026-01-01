@@ -65,7 +65,7 @@ class _SelectedSurahsWidgetState extends State<SelectedSurahsWidget>
               ],
             ),
             Visibility(
-              visible: (_selectedSurahs.length ?? 0) != 0,
+              visible: _selectedSurahs.length != 0,
               maintainSize: false,
               child: getSelectedSurahs(),
             ),
@@ -105,7 +105,7 @@ class _SelectedSurahsWidgetState extends State<SelectedSurahsWidget>
   Widget getTitle() {
     String text;
     Color color;
-    if ((_selectedSurahs.length ?? 0) == 0) {
+    if (_selectedSurahs.length == 0) {
       text = "لم يتم اختيار أية سور";
       color = Colors.pink;
     } else {

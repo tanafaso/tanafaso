@@ -79,23 +79,18 @@ class _DoReadingQuranChallengeScreenState
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Card(
-                    child: Visibility(
-                      visible: widget.group != null,
-                      child: widget.group == null
-                          ? Container()
-                          : ConstrainedBox(
-                              constraints: BoxConstraints(
-                                maxHeight:
-                                    MediaQuery.of(context).size.height / 5,
-                              ),
-                              child: FriendsProgressWidget(
-                                challenge: Challenge(
-                                    readingQuranChallenge: widget.challenge),
-                                challengedUsersIds: widget.challengedUsersIds,
-                                challengedUsersFullNames:
-                                    widget.challengedUsersFullNames,
-                              ),
-                            ),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        maxHeight:
+                            MediaQuery.of(context).size.height / 5,
+                      ),
+                      child: FriendsProgressWidget(
+                        challenge: Challenge(
+                            readingQuranChallenge: widget.challenge),
+                        challengedUsersIds: widget.challengedUsersIds,
+                        challengedUsersFullNames:
+                            widget.challengedUsersFullNames,
+                      ),
                     ),
                   ),
                   Padding(

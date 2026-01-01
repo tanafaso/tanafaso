@@ -96,7 +96,7 @@ class _SelectedAzkarWidgetState extends State<SelectedAzkarWidget>
               onPressed: () {
                 onAddAzkarPressed();
               },
-              child: (_subChallenges.length ?? 0) == 0
+              child: _subChallenges.length == 0
                   ? Icon(Icons.add, color: Theme.of(context).iconTheme.color)
                   : Text(
                       AppLocalizations.of(context).addAzkar,
@@ -263,7 +263,7 @@ class _SelectedAzkarWidgetState extends State<SelectedAzkarWidget>
                   categories: categories,
                 ))) as List<SubChallenge>;
 
-    if ((selectedAzkar.length ?? 0) == 0) {
+    if (selectedAzkar.length == 0) {
       return;
     }
 

@@ -60,8 +60,6 @@ int stepToOrder(Step step) {
     case Step.DONE:
       return 5;
   }
-  assert(false);
-  return 0;
 }
 
 Step orderToStep(int order) {
@@ -201,11 +199,6 @@ class _DoMemorizationChallengeListItemWidgetState
       case null:
         return Container();
     }
-
-    assert(false);
-    return Card(
-      color: Colors.grey,
-    );
   }
 
   void onStepDone() {

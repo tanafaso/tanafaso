@@ -66,7 +66,7 @@ class _SelectedFriendsWidgetState extends State<SelectedFriendsWidget>
               ],
             ),
             Visibility(
-              visible: (_selectedFriends.length ?? 0) != 0,
+              visible: _selectedFriends.length != 0,
               maintainSize: false,
               child: getSelectedFriends(),
             ),
@@ -101,8 +101,7 @@ class _SelectedFriendsWidgetState extends State<SelectedFriendsWidget>
                   ) as List<Friend>;
 
                   setState(() {
-                    _selectedFriends =
-                        selectedFriends == null ? [] : selectedFriends;
+                    _selectedFriends = selectedFriends;
                     widget.onSelectedFriendsChanged(_selectedFriends);
                   });
                 },
@@ -118,7 +117,7 @@ class _SelectedFriendsWidgetState extends State<SelectedFriendsWidget>
   Widget getTitle() {
     String text;
     Color color;
-    if ((_selectedFriends.length ?? 0) == 0) {
+    if (_selectedFriends.length == 0) {
       text = AppLocalizations.of(context).noFriendsSelected;
       color = Colors.pink;
     } else {
@@ -157,7 +156,7 @@ class _SelectedFriendsWidgetState extends State<SelectedFriendsWidget>
     );
   }
 
-  Widget _getSelectFriendsIcon() => (_selectedFriends.length ?? 0) == 0
+  Widget _getSelectFriendsIcon() => _selectedFriends.length == 0
       ? Icon(Icons.add, color: Theme.of(context).iconTheme.color)
       : Text(
           AppLocalizations.of(context).changeSelectedFriends,

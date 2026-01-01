@@ -116,29 +116,24 @@ class _DoAzkarChallengeScreenState extends State<DoAzkarChallengeScreen>
                         children: [
                           Column(
                             children: [
-                              Visibility(
-                                visible: widget.group != null,
-                                child: widget.group == null
-                                    ? Container()
-                                    : SingleChildScrollView(
-                                        child: ConstrainedBox(
-                                          constraints: BoxConstraints(
-                                            maxHeight: MediaQuery.of(context)
-                                                    .size
-                                                    .height /
-                                                5,
-                                          ),
-                                          child: FriendsProgressWidget(
-                                            challenge: Challenge(
-                                                azkarChallenge:
-                                                    widget.challenge),
-                                            challengedUsersIds:
-                                                widget.challengedUsersIds,
-                                            challengedUsersFullNames:
-                                                widget.challengedUsersFullNames,
-                                          ),
-                                        ),
-                                      ),
+                              SingleChildScrollView(
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxHeight: MediaQuery.of(context)
+                                            .size
+                                            .height /
+                                        5,
+                                  ),
+                                  child: FriendsProgressWidget(
+                                    challenge: Challenge(
+                                        azkarChallenge:
+                                            widget.challenge),
+                                    challengedUsersIds:
+                                        widget.challengedUsersIds,
+                                    challengedUsersFullNames:
+                                        widget.challengedUsersFullNames,
+                                  ),
+                                ),
                               ),
                               Visibility(
                                 child: Divider(),

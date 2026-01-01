@@ -25,7 +25,6 @@ class _GlobalChallengeWidgetState extends State<GlobalChallengeWidget>
     with SingleTickerProviderStateMixin {
   late GlobalChallenge _globalChallenge;
   late AnimationController _controller;
-  late Animation<Offset> _offsetAnimation;
 
   Future<void> getNeededData() async {
     _globalChallenge =
@@ -40,13 +39,6 @@ class _GlobalChallengeWidgetState extends State<GlobalChallengeWidget>
       duration: const Duration(seconds: 2),
       vsync: this,
     )..repeat(reverse: true);
-    _offsetAnimation = Tween<Offset>(
-      begin: Offset.zero,
-      end: const Offset(1.5, 0.0),
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.elasticIn,
-    ));
   }
 
   @override

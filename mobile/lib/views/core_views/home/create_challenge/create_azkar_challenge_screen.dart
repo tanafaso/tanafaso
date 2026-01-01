@@ -521,7 +521,7 @@ class _CreateAzkarChallengeScreenState
       return;
     }
 
-    bool challengingOneFriend = (_selectedFriends.length ?? 0) == 1;
+    bool challengingOneFriend = _selectedFriends.length == 1;
     final String? groupId =
         challengingOneFriend ? _selectedFriends[0].groupId : null;
 
@@ -574,7 +574,7 @@ class _CreateAzkarChallengeScreenState
   }
 
   bool readyToFinishChallenge(bool showWarnings) {
-    if ((_selectedFriends.length ?? 0) == 0) {
+    if (_selectedFriends.length == 0) {
       return false;
     }
     if (_subChallenges.length == 0) {
