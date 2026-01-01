@@ -1,4 +1,3 @@
-
 class QuranSurah {
   String name;
   int versesCount;

@@ -1,6 +1,5 @@
 import 'package:azkar/models/challenge.dart';
 
-
 class GlobalChallenge {
   GlobalChallenge({
     required this.challenge,

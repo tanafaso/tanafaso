@@ -36,7 +36,8 @@ class _DoReadingSurahScreenState extends State<DoReadingSurahScreen> {
           widget.surahSubChallenge.surahName!,
           style: TextStyle(
             fontSize: 30,
-            fontFamily: Theme.of(context).primaryTextTheme.labelLarge!.fontFamily,
+            fontFamily:
+                Theme.of(context).primaryTextTheme.labelLarge!.fontFamily,
           ),
         ),
       ),
@@ -88,7 +89,8 @@ class _DoReadingSurahScreenState extends State<DoReadingSurahScreen> {
                                         // ignore: deprecated_member_use
                                         Theme.of(context)
                                             // ignore: deprecated_member_use
-                                            .primaryTextTheme.labelLarge!
+                                            .primaryTextTheme
+                                            .labelLarge!
                                             .fontFamily,
                                   ),
                                 ),

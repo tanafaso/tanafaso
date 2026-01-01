@@ -77,7 +77,8 @@ class ZekrWidgetState extends State<ZekrWidget>
                                           style: TextStyle(
                                             fontSize: 25,
                                             fontFamily: Theme.of(context)
-                                                .primaryTextTheme.labelLarge!
+                                                .primaryTextTheme
+                                                .labelLarge!
                                                 .fontFamily,
                                           ),
                                         ),

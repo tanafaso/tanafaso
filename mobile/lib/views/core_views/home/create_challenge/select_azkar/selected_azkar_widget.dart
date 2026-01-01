@@ -150,7 +150,8 @@ class _SelectedAzkarWidgetState extends State<SelectedAzkarWidget>
                             style: TextStyle(
                                 fontSize: 20,
                                 fontFamily: Theme.of(context)
-                                    .primaryTextTheme.labelLarge!
+                                    .primaryTextTheme
+                                    .labelLarge!
                                     .fontFamily),
                           ),
                         ),

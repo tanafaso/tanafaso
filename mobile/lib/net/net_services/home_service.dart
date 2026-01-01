@@ -37,7 +37,8 @@ class HomeService {
       var response = GetHomeResponse.fromJson(jsonDecode(responseBody));
 
       if (response.hasError()) {
-        print('GET_HOME API returned error: ${response.error!.code} - ${response.error!.errorMessage}');
+        print(
+            'GET_HOME API returned error: ${response.error!.code} - ${response.error!.errorMessage}');
         throw new ApiException(response.error!);
       }
 

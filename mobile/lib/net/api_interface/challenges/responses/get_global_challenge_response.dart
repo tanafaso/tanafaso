@@ -16,6 +16,5 @@ class GetGlobalChallengeResponse extends ResponseBase {
     return response;
   }
 
-  Map<String, dynamic> toJson() =>
-      {'data': challenge.toJson()};
+  Map<String, dynamic> toJson() => {'data': challenge.toJson()};
 }

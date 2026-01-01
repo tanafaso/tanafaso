@@ -110,20 +110,24 @@ class SelectSurahScreen extends StatelessWidget {
                                             children: [
                                               TextSpan(text: ' من الآية رقم '),
                                               TextSpan(
-                                                  text: ArabicUtils.englishToArabic(
-                                                      firstAyah.toString()),
+                                                  text: ArabicUtils
+                                                      .englishToArabic(
+                                                          firstAyah.toString()),
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 30,
                                                       color: Colors.black)),
                                               TextSpan(
                                                 text: ' إلى الآية رقم ',
                                               ),
                                               TextSpan(
-                                                  text: ArabicUtils.englishToArabic(
-                                                      lastAyah.toString()),
+                                                  text: ArabicUtils
+                                                      .englishToArabic(
+                                                          lastAyah.toString()),
                                                   style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                      fontWeight:
+                                                          FontWeight.bold,
                                                       fontSize: 30,
                                                       color: Colors.black)),
                                             ],
@@ -132,7 +136,6 @@ class SelectSurahScreen extends StatelessWidget {
                                       ),
                                       textAlign: TextAlign.center,
                                     ),
-
                                     RangeSlider(
                                       values: RangeValues(firstAyah.toDouble(),
                                           lastAyah.toDouble()),

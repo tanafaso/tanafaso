@@ -16,14 +16,14 @@ class ApiCaller {
       String baseUrl = ApiRoutesUtil.apiRouteToString(
           Endpoint(endpointRoute: EndpointRoute.BASE_URL));
       String routePath = ApiRoutesUtil.apiRouteToString(route);
-      
+
       print('Making GET request to: https://$baseUrl/$routePath');
-      
+
       http.Response response = await ServiceProvider.httpClient.get(
         Uri.https(baseUrl, routePath, route.requestParams),
         headers: await getHeaders(),
       );
-      
+
       return response;
     } catch (e) {
       print('API GET Error for ${ApiRoutesUtil.apiRouteToString(route)}: $e');

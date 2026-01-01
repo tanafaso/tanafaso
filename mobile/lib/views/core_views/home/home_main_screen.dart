@@ -13,7 +13,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class HomeMainScreen extends StatefulWidget {
-
   @override
   _HomeMainScreenState createState() => _HomeMainScreenState();
 }
@@ -48,8 +47,8 @@ class _HomeMainScreenState extends State<HomeMainScreen>
       SharedPreferences sharedPreferences =
           await ServiceProvider.cacheManager.getPrefs();
       if (Platform.isAndroid &&
-          !sharedPreferences
-              .containsKey(CacheManager.CACHE_KEY_ASKED_FOR_NOTIFICATIONS_PERMISSION)) {
+          !sharedPreferences.containsKey(
+              CacheManager.CACHE_KEY_ASKED_FOR_NOTIFICATIONS_PERMISSION)) {
         await Permission.notification.request();
 
         await sharedPreferences.setBool(

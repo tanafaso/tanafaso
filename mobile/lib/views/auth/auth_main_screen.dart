@@ -223,8 +223,9 @@ class _AuthMainScreenState extends State<AuthMainScreen>
         padding: const EdgeInsets.all(16.0),
         child: Text(AppLocalizations.of(context).signingIn,
             style: TextStyle(
-                color: Colors.black,
-                fontSize: 30.0,)),
+              color: Colors.black,
+              fontSize: 30.0,
+            )),
       );
     }
     if (Platform.isIOS) {

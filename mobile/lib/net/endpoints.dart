@@ -1,6 +1,5 @@
 import 'dart:io' show Platform;
 
-
 enum EndpointRoute {
   BASE_URL,
   GET_HOME,

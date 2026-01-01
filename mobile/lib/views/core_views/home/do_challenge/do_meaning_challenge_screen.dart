@@ -206,7 +206,8 @@ class _DoMeaningChallengeScreenState extends State<DoMeaningChallengeScreen>
                                                       fontFamily: Theme.of(
                                                               context)
                                                           // ignore: deprecated_member_use
-                                                          .primaryTextTheme.labelLarge!
+                                                          .primaryTextTheme
+                                                          .labelLarge!
                                                           .fontFamily),
                                                 ),
                                               )),

@@ -296,7 +296,8 @@ class _SignUpMainScreenState extends State<SignUpMainScreen> {
                                 ),
                                 border: InputBorder.none,
                               ),
-                              onChanged: (password) => _password = password.trim(),
+                              onChanged: (password) =>
+                                  _password = password.trim(),
                               onEditingComplete: () =>
                                   repeatedPasswordFocus.requestFocus(),
                             ),

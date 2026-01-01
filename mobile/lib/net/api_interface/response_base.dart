@@ -9,7 +9,7 @@ abstract class ResponseBase {
   setError(Map<String, dynamic> json) {
     if (json['status'] is Map) {
       error = Status((json['status']['code'] ?? Status.API_DEFAULT_ERROR));
-    } else if (!json.containsKey('status')){
+    } else if (!json.containsKey('status')) {
       error = Status(Status.API_SUCCESS);
     } else {
       error = Status(Status.API_DEFAULT_ERROR);

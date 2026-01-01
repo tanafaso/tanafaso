@@ -149,7 +149,8 @@ class _DoReadingQuranChallengeScreenState
                                                   style: TextStyle(
                                                       fontFamily:
                                                           Theme.of(context)
-                                                              .primaryTextTheme.labelLarge!
+                                                              .primaryTextTheme
+                                                              .labelLarge!
                                                               .fontFamily,
                                                       fontWeight:
                                                           FontWeight.bold,

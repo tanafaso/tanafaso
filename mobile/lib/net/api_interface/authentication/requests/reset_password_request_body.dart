@@ -1,4 +1,3 @@
-
 import '../../request_base.dart';
 
 class ResetPasswordRequestBody extends RequestBodyBase {

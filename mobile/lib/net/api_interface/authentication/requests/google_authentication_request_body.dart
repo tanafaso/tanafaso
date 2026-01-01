@@ -1,4 +1,3 @@
-
 import '../../request_base.dart';
 
 class GoogleAuthenticationRequestBody extends RequestBodyBase {

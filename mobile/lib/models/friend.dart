@@ -1,4 +1,3 @@
-
 class Friend {
   final String userId;
   final String? groupId;

@@ -182,8 +182,7 @@ class ChallengesService {
 
   Future<void> finishGlobalChallenge() async {
     http.Response httpResponse = await ApiCaller.put(
-        route: Endpoint(
-            endpointRoute: EndpointRoute.FINISH_GLOBAL_CHALLENGE));
+        route: Endpoint(endpointRoute: EndpointRoute.FINISH_GLOBAL_CHALLENGE));
 
     var response = FinishGlobalChallengeResponse.fromJson(
         jsonDecode(utf8.decode(httpResponse.bodyBytes)));
@@ -230,8 +229,7 @@ class ChallengesService {
 
   Future<GlobalChallenge> getGlobalChallenge() async {
     http.Response httpResponse = await ApiCaller.get(
-        route: Endpoint(
-            endpointRoute: EndpointRoute.GET_GLOBAL_CHALLENGE));
+        route: Endpoint(endpointRoute: EndpointRoute.GET_GLOBAL_CHALLENGE));
     var response = GetGlobalChallengeResponse.fromJson(
         jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {
@@ -325,7 +323,7 @@ class ChallengesService {
     http.Response httpResponse = await ApiCaller.get(
         route: Endpoint(
             endpointRoute: EndpointRoute.GET_FINISHED_CHALLENGES_COUNT));
-    
+
     var response = GetFinishedChallengesCountResponse.fromJson(
         jsonDecode(utf8.decode(httpResponse.bodyBytes)));
     if (response.hasError()) {

@@ -30,7 +30,7 @@ class ChallengeWidgetUtil {
                   color: Colors.grey.shade700, fontWeight: FontWeight.bold)),
           new TextSpan(
             text:
-            ' ${ArabicUtils.englishToArabic(challenge.daysLeft().toString())} ',
+                ' ${ArabicUtils.englishToArabic(challenge.daysLeft().toString())} ',
           ),
           new TextSpan(
             text: AppLocalizations.of(context).day,
@@ -53,7 +53,7 @@ class ChallengeWidgetUtil {
                   color: Colors.grey.shade700, fontWeight: FontWeight.bold)),
           new TextSpan(
             text:
-            ' ${ArabicUtils.englishToArabic(challenge.hoursLeft().toString())} ',
+                ' ${ArabicUtils.englishToArabic(challenge.hoursLeft().toString())} ',
           ),
           new TextSpan(
             text: AppLocalizations.of(context).hour,

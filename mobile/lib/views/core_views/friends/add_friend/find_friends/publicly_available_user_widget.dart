@@ -46,8 +46,10 @@ class _PubliclyAvailableUserWidgetState
       padding: const EdgeInsets.all(8.0),
       child: ElevatedButton(
         child: invited
-            ? Text(AppLocalizations.of(context).invited, style: TextStyle(fontSize: 20))
-            : Text(AppLocalizations.of(context).invite, style: TextStyle(fontSize: 20)),
+            ? Text(AppLocalizations.of(context).invited,
+                style: TextStyle(fontSize: 20))
+            : Text(AppLocalizations.of(context).invite,
+                style: TextStyle(fontSize: 20)),
         style: ButtonStyle(
           backgroundColor:
               WidgetStateProperty.all(invited ? null : Colors.green.shade400),

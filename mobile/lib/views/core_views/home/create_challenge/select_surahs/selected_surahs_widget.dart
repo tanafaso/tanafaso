@@ -74,8 +74,7 @@ class _SelectedSurahsWidgetState extends State<SelectedSurahsWidget>
               padding: EdgeInsets.all(8),
               child: ElevatedButton(
                 style: ButtonStyle(
-                    elevation:
-                        WidgetStateProperty.resolveWith((states) => 10),
+                    elevation: WidgetStateProperty.resolveWith((states) => 10),
                     shape: WidgetStateProperty.resolveWith((_) =>
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30)))),
@@ -141,7 +140,8 @@ class _SelectedSurahsWidgetState extends State<SelectedSurahsWidget>
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: Theme.of(context)
-                                    .primaryTextTheme.labelLarge!
+                                    .primaryTextTheme
+                                    .labelLarge!
                                     .fontFamily,
                                 color: Colors.black)),
                         TextSpan(text: ' من الآية رقم '),

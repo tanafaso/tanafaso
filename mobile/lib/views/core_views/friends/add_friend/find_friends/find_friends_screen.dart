@@ -65,7 +65,8 @@ class _FindFriendsScreenState extends State<FindFriendsScreen> {
         child: FutureBuilder(
             future: _neededData,
             builder: (BuildContext context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done && !snapshot.hasError) {
+              if (snapshot.connectionState == ConnectionState.done &&
+                  !snapshot.hasError) {
                 if (_errorMessage != null) {
                   return Column(
                     children: [

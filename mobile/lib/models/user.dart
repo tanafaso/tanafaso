@@ -1,4 +1,3 @@
-
 class User {
   String? email;
   String id;

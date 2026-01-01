@@ -278,10 +278,8 @@ class _MyAppState extends State<MyApp> {
             inactiveTrackColor: Colors.grey,
             thumbColor: Colors.black,
             overlayColor: Colors.black,
-            valueIndicatorTextStyle: TextStyle(
-              color: Colors.black,
-              fontSize: 20
-            ),
+            valueIndicatorTextStyle:
+                TextStyle(color: Colors.black, fontSize: 20),
           ),
         ),
       ),

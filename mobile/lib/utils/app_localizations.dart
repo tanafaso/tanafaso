@@ -264,6 +264,7 @@ class AppLocalizations {
   String get signingIn {
     return _localizedValues[locale.languageCode]!['signing in...']!;
   }
+
   String get yes {
     return _localizedValues[locale.languageCode]!['yes']!;
   }
@@ -369,7 +370,8 @@ class AppLocalizations {
   }
 
   String get globalChallengeFeatureDescription {
-    return _localizedValues[locale.languageCode]!['global challenge feature description']!;
+    return _localizedValues[locale.languageCode]![
+        'global challenge feature description']!;
   }
 
   String get globalChallenge {

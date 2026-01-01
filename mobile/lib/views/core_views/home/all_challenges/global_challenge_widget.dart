@@ -202,7 +202,8 @@ class _GlobalChallengeWidgetState extends State<GlobalChallengeWidget>
                                         color: Colors.green,
                                         size: 45,
                                       ),
-                                      Padding(padding: EdgeInsets.only(left: 8)),
+                                      Padding(
+                                          padding: EdgeInsets.only(left: 8)),
                                     ],
                                   ),
                                 ],

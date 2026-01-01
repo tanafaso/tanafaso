@@ -304,7 +304,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           // ignore: deprecated_member_use
                           Padding(
-                            padding: const EdgeInsets.only(right: 8.0, top: 8.0),
+                            padding:
+                                const EdgeInsets.only(right: 8.0, top: 8.0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [

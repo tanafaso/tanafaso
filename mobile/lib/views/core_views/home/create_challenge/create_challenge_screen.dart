@@ -39,7 +39,8 @@ class CreateChallengeScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 30,
                             fontFamily: Theme.of(context)
-                                .primaryTextTheme.labelLarge!
+                                .primaryTextTheme
+                                .labelLarge!
                                 .fontFamily),
                         maxLines: 1,
                       ),
