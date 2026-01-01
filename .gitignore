@@ -1,22 +1,23 @@
-.idea
-/.vscode
-/.packages
-/.pub
-/build
-/ios/.generated
-/.packages
-/android/app/google-services.json
-/ios/GoogleService-Info.plist
-/.flutter-plugins-dependencies
-/.flutter-plugins
+# Flutter/Dart build artifacts
+build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+flutter_01.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.code-workspace
+
+# OS
 .DS_Store
-/.dart_tool
-/android/app/google-services.json
-/ios/GoogleService-Info.plist
-/ios/Runner/GoogleService-Info.plist
-/android/key.properties
-/android/app/androidkey.jks
-/azkar/
-/ios/build
-/lib/firebase_options.dart
-ios/firebase_app_id_file.json
+.AppleDouble
+.LSOverride
+
+# Temporary files
+*.log
+*.swp
+*.swo
+*~

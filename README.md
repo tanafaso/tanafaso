@@ -1,102 +1,187 @@
-<h1 align="center">:fire: تنافسوا</h1>
+# Tanafaso
 
-[![Code Formatter and Analayzer](https://github.com/tanafaso/tanafaso-frontend/actions/workflows/Code%20Formatter%20and%20Analayzer.yml/badge.svg)](https://github.com/tanafaso/tanafaso-frontend/actions/workflows/Code%20Formatter%20and%20Analayzer.yml)
-[![Notifications Disabled (for ease of open source contributions)](https://github.com/tanafaso/tanafaso-frontend/actions/workflows/Notifications%20Disabled%20Check.yml/badge.svg)](https://github.com/tanafaso/tanafaso-frontend/actions/workflows/Notifications%20Disabled%20Check.yml)
+A social Islamic app for Muslims to challenge each other in doing good deeds, reading Quran, and maintaining daily azkar (remembrance of Allah).
 
-A Flutter application for Muslims that help them challenge and motivate themselves and their friends to read Azkar in a fun way.
+## 🏗️ Architecture
 
-[On Play Store](https://play.google.com/store/apps/details?id=com.tanafaso.azkar) & [On App Store](https://apps.apple.com/us/app/تنافسوا/id1564309117?platform=iphone)
+This is a monorepo containing both the mobile application and backend API:
 
-Also, take a look at the [Backend](https://github.com/tanafaso/tanafaso-backend) repository.
+```
+tanafaso/
+├── mobile/          # Flutter mobile application (iOS & Android)
+├── api/             # Spring Boot REST API
+└── .github/         # CI/CD workflows
+```
 
-| ![Screenshot_1639467611](https://user-images.githubusercontent.com/13997703/146137503-39447315-5f58-48f6-8e95-1e742f7a570e.png) | ![Screenshot_1639467257](https://user-images.githubusercontent.com/13997703/146137488-7f9c214f-859b-4eb3-90f2-9f688b02f7e2.png) | ![Screenshot_1639467166](https://user-images.githubusercontent.com/13997703/146137484-6a62dbde-70ca-4821-9e58-8268fbdfca73.png) |
-|-|-|-|
-| ![Screenshot_1639466941](https://user-images.githubusercontent.com/13997703/146137475-81d5589f-817b-46bd-9e01-42474394e4b9.png) | ![Screenshot_1639466636](https://user-images.githubusercontent.com/13997703/146137449-e061292a-4a03-4b92-abee-2c21ef164c48.png) | ![Screenshot_1639466561](https://user-images.githubusercontent.com/13997703/146137438-40b870e6-610a-4ae1-a2c5-2774ff863aef.png) |
+### System Architecture
 
-## Setting up a Development Environment
- ### Git
-  To set up a local development environment, you have to do the following :
-  - Fork [tanafaso-frontend](https://github.com/tanafaso/tanafaso-frontend)
-  - Clone your fork using git clone `https://github.com/<your-github-username>/tanafaso-frontend`
-  - Navigate to your local repository using your cmd/terminal based on your local environment
-  - Check that your fork is the origin remote using `git remote -v`, if it is not then added using `git remote add origin https://github.com/<your-github-username>/tanafaso-frontend`
-  - Add the original project as upstream remote using `git remote add upstream https://github.com/tanafaso/tanafaso-frontend`
-  - Congratulations, you can start contribute now, but make sure you create branch for every proposed change you make.
- ### Test Accounts
- To get started quickly, you can sign in using Facebook with any of the following test accounts and feel free to add friendships or to create challenges with other test accounts.
+```
+┌─────────────────┐
+│  Mobile App     │
+│  (Flutter)      │
+└────────┬────────┘
+         │
+         │ HTTPS/REST
+         │
+┌────────▼────────┐
+│  Backend API    │
+│  (Spring Boot)  │
+└────────┬────────┘
+         │
+         │
+┌────────▼────────┐
+│  MongoDB        │
+│  (Database)     │
+└─────────────────┘
+```
 
-Facebook Test Email | Password
---- | ---
-qfgarmsuoy_1631511467@tfbnw.net | tanafasotestuser
-jpspapvsle_1630996165@tfbnw.net | tanafasotestuser
-ewwaeqgjsz_1622703110@tfbnw.net | tanafasotestuser
-gblsxmnsle_1631558303@tfbnw.net | tanafasotestuser
- 
- ### Note on Firebase Notifications Development
- Please note that if you don't intend to do changes regarding notifications, you have to comment the line `apply plugin: 'com.google.gms.google-services'` in file `android/app/build.gradle` so as to be able to build the android project.
- 
- If you intend to do changes regarding notifications, please create a firebase cloud messaging testing project and then move the `google-services.json` file you will obtain from firebase to `android/app` directory.
+## 🛠️ Technologies
 
-## Dependencies
-### Dependencies for Android
-- Android Studio IDE
-- Flutter SDK
-- Java SDK
+### Mobile (`mobile/`)
+- **Framework**: Flutter 2.5.3
+- **Language**: Dart
+- **Platforms**: iOS, Android
+- **Key Features**: 
+  - Social authentication (Google, Apple, Facebook)
+  - Push notifications
+  - Quran reading and memorization challenges
+  - Friend leaderboards and groups
 
-### Dependencies for IOS
-- Xcode IDE
+### API (`api/`)
+- **Framework**: Spring Boot
+- **Language**: Java
+- **Database**: MongoDB
+- **Key Features**:
+  - RESTful API
+  - JWT authentication
+  - Social OAuth integration
+  - Scheduled jobs for challenge cleanup
+  - Docker support
 
-For more information about dependencies, you can check the [flutter documentation](https://flutter.dev/docs/get-started/install).
+## 🚀 Getting Started
 
-## Code GuideLines
-- Use [snake case](https://www.theserverside.com/definition/Snake-case) for file names.
-- The filename should correspond to the name of the primary class in the file.
-- Names of files that contains widgets that take the whole screen should end with the suffix: `_screen.dart`, for example, signup or login takes up the whole screen for authentication.
-- Names of files that contains widgets that don't take the whole screen should end with the suffix: `_widget.dart`, for example, invite friends from facebook or twitter is a widget since it is part of the screen widget, but does not take the whole screen.
-- Use [Camel Case](https://techterms.com/definition/camelcase) convention for class and enum names.
-- Name (classes, variables, functions, modules) in a meaningful name which describe its functionality.
-- Make sure that all .dart files are formatted using `flutter format` command.
+### Prerequisites
 
-## Code Structure
-Assets (pictures, fonts and certificates) can be found in the [assets/](https://github.com/tanafaso/tanafaso-frontend/tree/master/assets) folder.
+**For Mobile Development:**
+- Flutter SDK 2.5.3+
+- Dart SDK
+- Android Studio (for Android development)
+- Xcode (for iOS development, macOS only)
 
-As you may already know, the cool thing about flutter is that you write code once in dart and
- then flutter does the hard work of compiling it into native Android and iOS code. You can find
-  the compiled native code in the following directories (**Note** that you would rarely need to
-   change code in these
-   directories):
-  - [android/](https://github.com/tanafaso/tanafaso-frontend/tree/master/android)
-  - [ios/](https://github.com/tanafaso/tanafaso-frontend/tree/master/ios)
-  
-All the dart code can be found in the [lib/](https://github.com/tanafaso/tanafaso-frontend/tree/master/lib) directory.
-- [lib/models/](https://github.com/tanafaso/tanafaso-frontend/tree/master/lib/models
-): Contains the definitions of all of the models used in the application (e.g. User, Challenge
-, etc...) and also defines how every model should be encoded and decoded.
-- [lib/net/](https://github.com/tanafaso/tanafaso-frontend/tree/master/lib/net
-): Implements the wire between the frontend and the backend ([tanafaso/tanafas-backend](https://github.com/tanafaso/tanafaso-backend)).
-    - [lib/net/endpoints.dart](https://github.com/tanafaso/tanafaso-frontend/blob/master/lib/net/endpoints.dart) contains all of the endpoints that the API is supporting for this
-     frontend version.
-- [lib/utils/](https://github.com/tanafaso/tanafaso-frontend/tree/master/lib/utils
-): Contains classes that provide utilities that will be used throughout the application code.
-- [lib/views/](https://github.com/tanafaso/tanafaso-frontend/tree/master/lib/views
-): Contains all of the declarations of the user interface.
-  - *Screen.dart: Classes that end with the suffix "Screen" are declaring a whole screen that the
-   user will see.
-  - *Widget.dart: Classes that end with the suffix "Widget" are declaring a widget that will be
-   part of the user screen.
+**For API Development:**
+- Java JDK 11+
+- Maven 3.6+
+- MongoDB 4.4+
+- Docker & Docker Compose (optional but recommended)
 
-## Contributing
-(Optionally) join Tanafaso's [discord server](https://discord.gg/jSKsZdJcT5) to give feedback, propose new features or ask for help.
+### Setting Up the Mobile App
 
-There are a lot of ways you can contribute to this project. You can filter issues by `good first issue` label to get started with an issue that is easy to fix.
-- Suggest new features by filing an issue.
-- Report bugs by filing an issue.
-- Add code documentation, so that it is easier for future contributers to ramp-up.
-- Add unit tests (Read [The Testing Strategy](https://github.com/tanafaso/tanafaso-frontend/blob/master/test/README.md)).
-- Add widget tests (Read [The Testing Strategy](https://github.com/tanafaso/tanafaso-frontend/blob/master/test/README.md)).
-- Refactor the code to make it more readable, maintainable and scalable.
-- Add pull requests with bug fixes.
-- Add pull requests with new features.
+```bash
+cd mobile
+flutter pub get
+flutter run
+```
 
-## License
-The application code is licensed under [MIT LICENSE](https://github.com/tanafaso/tanafaso-frontend/blob/master/LICENSE.md).
+For detailed mobile setup, configuration, and development instructions, see [mobile/README.md](mobile/README.md).
+
+### Setting Up the API
+
+#### Using Docker (Recommended)
+```bash
+cd api
+docker-compose up
+```
+
+#### Manual Setup
+```bash
+cd api
+# Start MongoDB first
+./mvnw spring-boot:run
+```
+
+For detailed API setup, environment variables, and development instructions, see [api/README.md](api/README.md).
+
+## 🤝 Contributing
+
+### Workflow
+
+1. **Fork and clone** the repository
+2. **Create a branch** for your feature: `git checkout -b feature/amazing-feature`
+3. **Make your changes** in either `mobile/` or `api/` directory
+4. **Test your changes** locally
+5. **Commit** with clear messages: `git commit -m 'Add amazing feature'`
+6. **Push** to your fork: `git push origin feature/amazing-feature`
+7. **Open a Pull Request**
+
+### Code Style
+
+- **Mobile**: Follow Dart style guide. Run `flutter format .` before committing
+- **API**: Follow Google Java Style Guide (enforced by checkstyle)
+
+### Testing
+
+- **Mobile**: Ensure all tests pass with `flutter test`
+- **API**: Run tests with `./mvnw test`
+
+### CI/CD
+
+GitHub Actions automatically run on pull requests:
+- **Mobile workflows** trigger on `mobile/**` changes
+- **API workflows** trigger on `api/**` changes
+
+This ensures efficient CI runs - mobile changes won't trigger API builds and vice versa.
+
+## 📁 Repository Structure
+
+```
+.
+├── mobile/                          # Mobile application
+│   ├── android/                     # Android-specific code
+│   ├── ios/                         # iOS-specific code
+│   ├── lib/                         # Dart application code
+│   │   ├── models/                  # Data models
+│   │   ├── views/                   # UI screens
+│   │   ├── services/                # Business logic
+│   │   └── net/                     # API integration
+│   ├── assets/                      # Images, fonts, Quran text
+│   └── pubspec.yaml                 # Flutter dependencies
+│
+├── api/                             # Backend API
+│   ├── src/
+│   │   ├── main/java/               # Java source code
+│   │   │   └── com/azkar/           # Main application package
+│   │   └── test/                    # Test files
+│   ├── pom.xml                      # Maven dependencies
+│   ├── docker-compose.yml           # Docker setup
+│   └── docker-compose-test.yml      # Test environment
+│
+└── .github/
+    └── workflows/                   # CI/CD pipelines
+        ├── mobile-format-analyze.yml
+        ├── mobile-notifications-check.yml
+        └── api-build-test.yml
+```
+
+## 📱 Features
+
+- **Azkar Challenges**: Daily remembrance challenges between friends
+- **Quran Reading**: Track and challenge friends in Quran reading
+- **Memorization**: Test Quran memorization with interactive quizzes
+- **Meaning Challenges**: Learn and compete on Quran verse meanings
+- **Social Features**: Friends, groups, leaderboards
+- **Notifications**: Push notifications for challenges and completions
+- **Multi-platform**: iOS and Android support
+
+## 📄 License
+
+See [mobile/LICENSE.md](mobile/LICENSE.md) for license information.
+
+## 🔗 Links
+
+- **Mobile README**: [mobile/README.md](mobile/README.md)
+- **API README**: [api/README.md](api/README.md)
+- **Issues**: [GitHub Issues](https://github.com/tanafaso/tanafaso-frontend/issues)
+
+## 🙏 Acknowledgments
+
+Built with ❤️ for the Muslim community to help each other grow spiritually.

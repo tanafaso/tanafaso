@@ -1,0 +1,15 @@
+.idea/
+/target/
+/azkar.iml
+env.sh
+env-prod.sh
+/logs/
+/LOGS_PATH_IS_UNDEFINED/
+.DS_Store
+src/main/.DS_Store
+firebase-key.json
+/src/main/resources/tanafaso.p12
+/src/main/resources/sign_in_with_apple_auth_key
+feedback.csv
+Dockerfile
+deployCommand.txt

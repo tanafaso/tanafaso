@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tanafaso</title>
+  <style>
+        /* Style all input fields */
+        input {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        }
+
+        /* Style the submit button */
+        input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        }
+
+        /* Style the container for inputs */
+        .container {
+        background-color: #f1f1f1;
+        padding: 20px;
+        }
+
+        /* The message box is shown when the user clicks on the password field */
+        #message {
+        display:none;
+        background: #f1f1f1;
+        color: #000;
+        position: relative;
+        padding: 20px;
+        margin-top: 10px;
+        }
+
+        #message p {
+        padding: 10px 35px;
+        font-size: 18px;
+        }
+
+        /* Add a green text color and a checkmark when the requirements are right */
+        .valid {
+        color: green;
+        }
+
+        .valid:before {
+        position: relative;
+        left: -35px;
+        content: "&#10004;";
+        }
+
+        /* Add a red text color and an "x" icon when the requirements are wrong */
+        .invalid {
+        color: red;
+        }
+
+        .invalid:before {
+        position: relative;
+        left: -35px;
+        content: "&#10006;";
+        }
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <form action="/feedback" method="POST" style="direction: rtl;">
+    <label for="name">الاسم</label>
+    <input type="text" id="name" name="name" placeholder="الاسم" required>
+    <label for="email">البريد الإلكتروني</label>
+    <input type="text" id="email" name="email" placeholder="البريد الإلكتروني" required>
+    <label for="subject">العنوان</label>
+    <input type="text" id="subject" name="subject" placeholder="العنوان" required>
+    <label for="msg">الرسالة</label>
+    <input type="text" id="msg" name="msg" placeholder="الرسالة" required>
+
+    <input type="submit" value="إرسال">
+  </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+name: Mobile - Notifications Disabled Check
+
+on:
+  pull_request:
+    paths:
+      - 'mobile/**'
+  push:
+    branches:
+      - master
+    paths:
+      - 'mobile/**'
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: |
+          found=($(grep "^apply plugin: 'com.google.gms.google-services'" mobile/android/app/build.gradle | wc -l))
+          [ "$found" == "0" ] || exit 1
+          exit 0
