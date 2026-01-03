@@ -24,7 +24,7 @@ class AuthenticationService {
 
   Future<void> loginWithGoogle(String googleIdToken) async {
     final http.Response apiResponse = await http.put(
-        Uri.https(
+        ApiCaller.buildUri(
             ApiRoutesUtil.apiRouteToString(
                 Endpoint(endpointRoute: EndpointRoute.BASE_URL)),
             ApiRoutesUtil.apiRouteToString(
@@ -96,7 +96,7 @@ class AuthenticationService {
       throw new Exception("Authorization code was not provided by Apple");
     }
     final http.Response apiResponse = await http.put(
-        Uri.https(
+        ApiCaller.buildUri(
             ApiRoutesUtil.apiRouteToString(
                 Endpoint(endpointRoute: EndpointRoute.BASE_URL)),
             ApiRoutesUtil.apiRouteToString(
@@ -127,7 +127,7 @@ class AuthenticationService {
     http.Response apiResponse;
     try {
       apiResponse = await http.put(
-        Uri.https(
+        ApiCaller.buildUri(
             ApiRoutesUtil.apiRouteToString(
                 Endpoint(endpointRoute: EndpointRoute.BASE_URL)),
             ApiRoutesUtil.apiRouteToString(
@@ -152,7 +152,7 @@ class AuthenticationService {
     http.Response apiResponse;
     try {
       apiResponse = await http.put(
-        Uri.https(
+        ApiCaller.buildUri(
             ApiRoutesUtil.apiRouteToString(
                 Endpoint(endpointRoute: EndpointRoute.BASE_URL)),
             ApiRoutesUtil.apiRouteToString(

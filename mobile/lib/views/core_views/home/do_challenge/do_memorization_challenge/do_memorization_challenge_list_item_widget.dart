@@ -223,7 +223,7 @@ class _DoMemorizationChallengeListItemWidgetState
     if (widget.question.finished!) {
       return Icon(
         Icons.done_outline,
-        color: Colors.green,
+        color: Theme.of(context).colorScheme.secondaryContainer,
         size: 30,
       );
     }

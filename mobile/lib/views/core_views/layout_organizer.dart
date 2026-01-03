@@ -125,7 +125,8 @@ class _LayoutOrganizerState extends State<LayoutOrganizer>
             bottomNavigationBar: BottomNavigationBar(
               backgroundColor: Theme.of(context).colorScheme.primary,
               items: topics.map((e) => e.bottomNavigationBarItem).toList(),
-              selectedItemColor: Colors.green,
+              selectedItemColor:
+                  Theme.of(context).colorScheme.secondaryContainer,
               type: BottomNavigationBarType.shifting,
               unselectedItemColor: Colors.black,
               showUnselectedLabels: false,

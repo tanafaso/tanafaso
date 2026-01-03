@@ -1,4 +1,4 @@
-import 'dart:io' show Platform;
+import '../config/app_config.dart';
 
 enum EndpointRoute {
   BASE_URL,
@@ -71,18 +71,7 @@ class ApiRoutesUtil {
   static String apiRouteToString(Endpoint route) {
     switch (route.endpointRoute) {
       case EndpointRoute.BASE_URL:
-        if (Platform.isAndroid) {
-          // Use the following for testing locally.
-          // return '10.0.2.2:8080';
-          return 'tanafaso-3cituzoyra-ew.a.run.app';
-        }
-        if (Platform.isIOS) {
-          // Use your computer's private IP as the following example.
-          // return '192.168.2.102:8080';
-          return 'tanafaso-3cituzoyra-ew.a.run.app';
-        }
-        assert(false);
-        return "";
+        return AppConfig.getBaseUrl();
       case EndpointRoute.GET_HOME:
         return '/apiHome';
       case EndpointRoute.LOGIN_WITH_APPLE:

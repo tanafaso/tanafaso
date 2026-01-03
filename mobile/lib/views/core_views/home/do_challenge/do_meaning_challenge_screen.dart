@@ -142,8 +142,8 @@ class _DoMeaningChallengeScreenState extends State<DoMeaningChallengeScreen>
                     },
                     children: [
                       FriendsProgressWidget(
-                        challenge: Challenge(
-                            meaningChallenge: widget.challenge),
+                        challenge:
+                            Challenge(meaningChallenge: widget.challenge),
                         challengedUsersIds: widget.challengedUsersIds,
                         challengedUsersFullNames:
                             widget.challengedUsersFullNames,

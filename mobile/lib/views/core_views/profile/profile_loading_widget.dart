@@ -83,7 +83,8 @@ class ProfileLoadingWidget extends StatelessWidget {
                       ),
                       SizedBox(height: 12),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                         decoration: BoxDecoration(
                           color: Colors.grey.shade100,
                           borderRadius: BorderRadius.circular(12),
@@ -138,10 +139,14 @@ class ProfileLoadingWidget extends StatelessWidget {
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
-                          colors: [Colors.green.shade400, Colors.green.shade600],
+                          colors: [
+                            Colors.green.shade400,
+                            Colors.green.shade600
+                          ],
                         ),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                       child: Shimmer.fromColors(
                         baseColor: Colors.white.withOpacity(0.3),
                         highlightColor: Colors.white.withOpacity(0.7),
@@ -199,10 +204,14 @@ class ProfileLoadingWidget extends StatelessWidget {
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
-                          colors: [Colors.amber.shade400, Colors.amber.shade700],
+                          colors: [
+                            Colors.amber.shade400,
+                            Colors.amber.shade700
+                          ],
                         ),
                       ),
-                      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                       child: Shimmer.fromColors(
                         baseColor: Colors.white.withOpacity(0.3),
                         highlightColor: Colors.white.withOpacity(0.7),
@@ -269,9 +278,8 @@ class ProfileLoadingWidget extends StatelessWidget {
                     SizedBox(width: 8),
                     AutoSizeText(
                       AppLocalizations.of(context).logout,
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -297,9 +305,8 @@ class ProfileLoadingWidget extends StatelessWidget {
                     SizedBox(width: 8),
                     AutoSizeText(
                       "مسح الحساب",
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

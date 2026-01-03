@@ -58,20 +58,20 @@ class _LiveSupportScreenState extends State<LiveSupportScreen>
   Widget build(BuildContext context) {
     if (crispMain == null) {
       return SafeArea(
-            child: Center(
-              child: RotationTransition(
-                child: Image.asset('assets/images/logo.png'),
-                turns: Tween(begin: 0.0, end: 1.0)
-                    .animate(_loadingAnimationController!),
-              ),
-            ),
-          );
+        child: Center(
+          child: RotationTransition(
+            child: Image.asset('assets/images/logo.png'),
+            turns: Tween(begin: 0.0, end: 1.0)
+                .animate(_loadingAnimationController!),
+          ),
+        ),
+      );
     } else {
       return SafeArea(
-            child: CrispView(
-              crispMain: crispMain!,
-            ),
-          );
+        child: CrispView(
+          crispMain: crispMain!,
+        ),
+      );
     }
   }
 

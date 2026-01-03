@@ -81,12 +81,11 @@ class _DoReadingQuranChallengeScreenState
                   Card(
                     child: ConstrainedBox(
                       constraints: BoxConstraints(
-                        maxHeight:
-                            MediaQuery.of(context).size.height / 5,
+                        maxHeight: MediaQuery.of(context).size.height / 5,
                       ),
                       child: FriendsProgressWidget(
-                        challenge: Challenge(
-                            readingQuranChallenge: widget.challenge),
+                        challenge:
+                            Challenge(readingQuranChallenge: widget.challenge),
                         challengedUsersIds: widget.challengedUsersIds,
                         challengedUsersFullNames:
                             widget.challengedUsersFullNames,
