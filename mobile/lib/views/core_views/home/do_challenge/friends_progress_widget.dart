@@ -86,7 +86,7 @@ class _FriendsProgressWidgetState extends State<FriendsProgressWidget> {
       return Icon(
         Icons.done_outline,
         size: widget.iconSize.toDouble(),
-        color: Colors.green,
+        color: Theme.of(context).colorScheme.secondaryContainer,
       );
     }
 

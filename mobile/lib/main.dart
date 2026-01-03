@@ -163,6 +163,10 @@ class _MyAppState extends State<MyApp> {
             onSurface: Colors.white,
             onError: Colors.red.shade600,
             brightness: Brightness.light,
+            tertiary: Colors.orange.shade50,
+            onTertiary: Colors.orange.shade700,
+            tertiaryContainer: Colors.orange.shade300,
+            secondaryContainer: Colors.green.shade700,
           ),
           buttonTheme: ButtonThemeData(
               colorScheme: ColorScheme.light(

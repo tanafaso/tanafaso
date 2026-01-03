@@ -78,11 +78,7 @@ class UserProgressLoadingWidget extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Colors.amber.shade400, Colors.amber.shade700],
-                  ),
+                  color: Colors.orange.shade300,
                 ),
                 padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
                 child: Shimmer.fromColors(

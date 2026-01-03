@@ -83,8 +83,7 @@ class _DoMemorizationChallengeScreenState
                             fontWeight: FontWeight.bold),
                       ),
                       initiallyExpanded: _friendsTileExpanded!,
-                      backgroundColor:
-                          Theme.of(context).colorScheme.secondary,
+                      backgroundColor: Theme.of(context).colorScheme.secondary,
                       collapsedBackgroundColor:
                           Theme.of(context).colorScheme.secondary,
                       textColor: Colors.black,
@@ -105,12 +104,10 @@ class _DoMemorizationChallengeScreenState
                           children: [
                             FriendsProgressWidget(
                               challenge: Challenge(
-                                  memorizationChallenge:
-                                      widget.challenge),
-                              challengedUsersIds:
-                                  widget.challengedUsersIds,
-                              challengedUsersFullNames: widget
-                                  .challengedUsersFullNames,
+                                  memorizationChallenge: widget.challenge),
+                              challengedUsersIds: widget.challengedUsersIds,
+                              challengedUsersFullNames:
+                                  widget.challengedUsersFullNames,
                             ),
                           ],
                         ),

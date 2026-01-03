@@ -1,5 +1,6 @@
 import 'package:azkar/net/api_exception.dart';
 import 'package:azkar/services/service_provider.dart';
+import 'package:azkar/utils/arabic_utils.dart';
 import 'package:azkar/utils/snapshot_utils.dart';
 import 'package:azkar/views/core_views/home/user_progress/user_progress_loading_widget.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,8 @@ class _UserProgressWidgetState extends State<UserProgressWidget>
             animationController.forward();
 
             return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
               child: Row(
                 children: [
                   Expanded(
@@ -73,10 +75,14 @@ class _UserProgressWidgetState extends State<UserProgressWidget>
                           gradient: LinearGradient(
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
-                            colors: [Colors.green.shade400, Colors.green.shade600],
+                            colors: [
+                              Colors.green.shade400,
+                              Colors.green.shade600
+                            ],
                           ),
                         ),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 12),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -102,17 +108,20 @@ class _UserProgressWidgetState extends State<UserProgressWidget>
                             SizedBox(height: 2),
                             FittedBox(
                               fit: BoxFit.scaleDown,
-                              child: Directionality(
-                                textDirection: TextDirection.ltr,
-                                child: SlideOdometerTransition(
-                                  letterWidth: 28,
-                                  odometerAnimation: consecutiveDaysAnimation,
-                                  numberTextStyle: const TextStyle(
-                                    fontSize: 36,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                              child: AnimatedBuilder(
+                                animation: consecutiveDaysAnimation,
+                                builder: (context, child) {
+                                  return Text(
+                                    ArabicUtils.englishToArabic(
+                                        consecutiveDaysAnimation.value.number
+                                            .toString()),
+                                    style: const TextStyle(
+                                      fontSize: 36,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                             SizedBox(height: 2),
@@ -138,13 +147,10 @@ class _UserProgressWidgetState extends State<UserProgressWidget>
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(16),
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [Colors.amber.shade400, Colors.amber.shade700],
-                          ),
+                          color: Colors.orange.shade300,
                         ),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 12),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -170,17 +176,20 @@ class _UserProgressWidgetState extends State<UserProgressWidget>
                             SizedBox(height: 2),
                             FittedBox(
                               fit: BoxFit.scaleDown,
-                              child: Directionality(
-                                textDirection: TextDirection.ltr,
-                                child: SlideOdometerTransition(
-                                  letterWidth: 28,
-                                  odometerAnimation: finishedCountAnimation,
-                                  numberTextStyle: const TextStyle(
-                                    fontSize: 36,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                              child: AnimatedBuilder(
+                                animation: finishedCountAnimation,
+                                builder: (context, child) {
+                                  return Text(
+                                    ArabicUtils.englishToArabic(
+                                        finishedCountAnimation.value.number
+                                            .toString()),
+                                    style: const TextStyle(
+                                      fontSize: 36,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                             SizedBox(height: 2),

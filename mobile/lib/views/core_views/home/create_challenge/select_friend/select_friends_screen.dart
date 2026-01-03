@@ -42,8 +42,8 @@ class _SelectFriendsScreenState extends State<SelectFriendsScreen> {
                     child: getFriendsList(
                         context,
                         widget.friends
-                                .where((friend) => !friend.pending)
-                                .toList()))),
+                            .where((friend) => !friend.pending)
+                            .toList()))),
             Padding(
               padding: const EdgeInsets.only(
                   left: 8.0, right: 8, top: 8, bottom: 3 * 8.0),

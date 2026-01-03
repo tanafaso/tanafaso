@@ -342,7 +342,7 @@ class _ChallengeListItemWidgetState extends State<ChallengeListItemWidget>
                 },
                 child: Icon(
                   Icons.group_sharp,
-                  color: Colors.green,
+                  color: Theme.of(context).colorScheme.secondaryContainer,
                   size: 45,
                 ),
               ),

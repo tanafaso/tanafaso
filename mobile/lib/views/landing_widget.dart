@@ -40,7 +40,7 @@ class _LandingWidgetState extends State<LandingWidget> {
             child: FittedBox(
                 child: Icon(
               Icons.directions_run,
-              color: Colors.green.shade800,
+              color: Theme.of(context).colorScheme.secondaryContainer,
             )),
           )
         ],

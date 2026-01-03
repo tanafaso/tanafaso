@@ -73,10 +73,14 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                                     gradient: LinearGradient(
                                       begin: Alignment.topLeft,
                                       end: Alignment.bottomRight,
-                                      colors: [Colors.green.shade400, Colors.green.shade600],
+                                      colors: [
+                                        Colors.green.shade400,
+                                        Colors.green.shade600
+                                      ],
                                     ),
                                   ),
-                                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 20, horizontal: 16),
                                   child: Column(
                                     children: [
                                       Icon(
@@ -137,11 +141,14 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                                       ),
                                       SizedBox(height: 12),
                                       Container(
-                                        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 16, vertical: 12),
                                         decoration: BoxDecoration(
                                           color: Colors.grey.shade100,
-                                          borderRadius: BorderRadius.circular(12),
-                                          border: Border.all(color: Colors.grey.shade300),
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          border: Border.all(
+                                              color: Colors.grey.shade300),
                                         ),
                                         child: Row(
                                           mainAxisAlignment:
@@ -190,8 +197,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                                             IconButton(
                                               onPressed: () {
                                                 Share.share(
-                                                    AppLocalizations.of(
-                                                            context)
+                                                    AppLocalizations.of(context)
                                                         .shareMessage(
                                                             _user.username));
                                               },
@@ -209,7 +215,8 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 16),                          Row(
+                          SizedBox(height: 16),
+                          Row(
                             children: [
                               Expanded(
                                 child: Card(
@@ -223,12 +230,17 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                                       gradient: LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
-                                        colors: [Colors.green.shade400, Colors.green.shade600],
+                                        colors: [
+                                          Colors.green.shade400,
+                                          Colors.green.shade600
+                                        ],
                                       ),
                                     ),
-                                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 12, horizontal: 12),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Icon(
                                           Icons.local_fire_department,
@@ -287,12 +299,17 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                                       gradient: LinearGradient(
                                         begin: Alignment.topLeft,
                                         end: Alignment.bottomRight,
-                                        colors: [Colors.amber.shade400, Colors.amber.shade700],
+                                        colors: [
+                                          Colors.amber.shade400,
+                                          Colors.amber.shade700
+                                        ],
                                       ),
                                     ),
-                                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: 12, horizontal: 12),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         Icon(
                                           Icons.emoji_events,
@@ -340,12 +357,14 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 16),                          Container(
+                          SizedBox(height: 16),
+                          Container(
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.grey.shade600,
                                 foregroundColor: Colors.white,
-                                padding: EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 14, horizontal: 24),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
@@ -375,7 +394,8 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.red.shade600,
                                 foregroundColor: Colors.white,
-                                padding: EdgeInsets.symmetric(vertical: 14, horizontal: 24),
+                                padding: EdgeInsets.symmetric(
+                                    vertical: 14, horizontal: 24),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),
@@ -383,8 +403,7 @@ class _ProfileMainScreenState extends State<ProfileMainScreen> {
                               ),
                               onPressed: () async {
                                 bool deleted =
-                                    await _showDeleteUserAlertDialog(
-                                            context) ??
+                                    await _showDeleteUserAlertDialog(context) ??
                                         false;
                                 if (deleted) {
                                   await ServiceProvider.secureStorageService

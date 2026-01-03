@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:azkar/config/app_config.dart';
 import 'package:azkar/net/api_exception.dart';
 import 'package:azkar/net/api_interface/request_base.dart';
 import 'package:azkar/net/endpoints.dart';
@@ -11,16 +12,27 @@ class ApiCaller {
   static const String API_VERSION_HEADER = 'api-version';
   static const String API_VERSION = '1.11.0';
 
+  /// Build URI based on environment (http for local, https for production)
+  /// Made public so other services can use it
+  static Uri buildUri(String baseUrl, String path,
+      [Map<String, dynamic>? queryParameters]) {
+    if (AppConfig.isLocal) {
+      return Uri.http(baseUrl, path, queryParameters);
+    }
+    return Uri.https(baseUrl, path, queryParameters);
+  }
+
   static Future<http.Response> get({required Endpoint route}) async {
     try {
       String baseUrl = ApiRoutesUtil.apiRouteToString(
           Endpoint(endpointRoute: EndpointRoute.BASE_URL));
       String routePath = ApiRoutesUtil.apiRouteToString(route);
 
-      print('Making GET request to: https://$baseUrl/$routePath');
+      print(
+          'Making GET request to: ${AppConfig.protocol}://$baseUrl/$routePath');
 
       http.Response response = await ServiceProvider.httpClient.get(
-        Uri.https(baseUrl, routePath, route.requestParams),
+        buildUri(baseUrl, routePath, route.requestParams),
         headers: await getHeaders(),
       );
 
@@ -35,7 +47,7 @@ class ApiCaller {
       {required Endpoint route, RequestBodyBase? requestBody}) async {
     try {
       return await ServiceProvider.httpClient.put(
-        Uri.https(
+        buildUri(
             ApiRoutesUtil.apiRouteToString(
                 Endpoint(endpointRoute: EndpointRoute.BASE_URL)),
             ApiRoutesUtil.apiRouteToString(route)),
@@ -52,7 +64,7 @@ class ApiCaller {
       {required Endpoint route, RequestBodyBase? requestBody}) async {
     try {
       return await ServiceProvider.httpClient.post(
-        Uri.https(
+        buildUri(
             ApiRoutesUtil.apiRouteToString(
                 Endpoint(endpointRoute: EndpointRoute.BASE_URL)),
             ApiRoutesUtil.apiRouteToString(route)),
@@ -69,7 +81,7 @@ class ApiCaller {
       {required Endpoint route, RequestBodyBase? requestBody}) async {
     try {
       return await ServiceProvider.httpClient.delete(
-        Uri.https(
+        buildUri(
             ApiRoutesUtil.apiRouteToString(
                 Endpoint(endpointRoute: EndpointRoute.BASE_URL)),
             ApiRoutesUtil.apiRouteToString(route)),

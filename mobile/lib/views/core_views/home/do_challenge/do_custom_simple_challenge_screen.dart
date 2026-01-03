@@ -77,12 +77,11 @@ class _DoCustomSimpleChallengeScreenState
                   Card(
                     child: ConstrainedBox(
                       constraints: BoxConstraints(
-                        maxHeight:
-                            MediaQuery.of(context).size.height / 5,
+                        maxHeight: MediaQuery.of(context).size.height / 5,
                       ),
                       child: FriendsProgressWidget(
-                        challenge: Challenge(
-                            customSimpleChallenge: widget.challenge),
+                        challenge:
+                            Challenge(customSimpleChallenge: widget.challenge),
                         challengedUsersIds: widget.challengedUsersIds,
                         challengedUsersFullNames:
                             widget.challengedUsersFullNames,

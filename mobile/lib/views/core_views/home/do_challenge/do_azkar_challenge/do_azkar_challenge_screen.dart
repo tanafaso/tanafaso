@@ -85,7 +85,8 @@ class _DoAzkarChallengeScreenState extends State<DoAzkarChallengeScreen>
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 4),
+                    padding: const EdgeInsets.only(
+                        left: 8, right: 8, top: 8, bottom: 4),
                     child: Column(
                       children: [
                         Row(
@@ -104,7 +105,9 @@ class _DoAzkarChallengeScreenState extends State<DoAzkarChallengeScreen>
                               style: TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.green.shade700,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .secondaryContainer,
                               ),
                             ),
                           ],
@@ -115,10 +118,15 @@ class _DoAzkarChallengeScreenState extends State<DoAzkarChallengeScreen>
                           child: LinearProgressIndicator(
                             value: widget.challenge.subChallenges.isEmpty
                                 ? 0
-                                : widget.challenge.subChallenges.where((s) => s.done()).length /
+                                : widget.challenge.subChallenges
+                                        .where((s) => s.done())
+                                        .length /
                                     widget.challenge.subChallenges.length,
                             backgroundColor: Colors.grey.shade300,
-                            valueColor: AlwaysStoppedAnimation<Color>(Colors.green),
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Theme.of(context)
+                                    .colorScheme
+                                    .secondaryContainer),
                             minHeight: 12,
                           ),
                         ),
@@ -126,7 +134,8 @@ class _DoAzkarChallengeScreenState extends State<DoAzkarChallengeScreen>
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+                    padding:
+                        const EdgeInsets.only(left: 8, right: 8, bottom: 8),
                     child: Card(
                       child: ExpansionTile(
                         key: GlobalKey(debugLabel: 'friends_tile_key'),
@@ -160,15 +169,12 @@ class _DoAzkarChallengeScreenState extends State<DoAzkarChallengeScreen>
                               SingleChildScrollView(
                                 child: ConstrainedBox(
                                   constraints: BoxConstraints(
-                                    maxHeight: MediaQuery.of(context)
-                                            .size
-                                            .height /
-                                        5,
+                                    maxHeight:
+                                        MediaQuery.of(context).size.height / 5,
                                   ),
                                   child: FriendsProgressWidget(
                                     challenge: Challenge(
-                                        azkarChallenge:
-                                            widget.challenge),
+                                        azkarChallenge: widget.challenge),
                                     challengedUsersIds:
                                         widget.challengedUsersIds,
                                     challengedUsersFullNames:
