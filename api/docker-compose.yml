@@ -10,7 +10,6 @@ services:
       - 27017:27017
     volumes:
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-      - mongodb_data_container:/data/db
     healthcheck:
       test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
       interval: 10s
@@ -29,6 +28,7 @@ services:
       - maven-cache:/root/.m2
     environment:
       DATABASE_URI: mongodb://mongo:27017/tanafaso
+      DATABASE_NAME: tanafaso
       SERVER_PORT: 8080
       JWT_SECRET: example-secret
       LOGS_PATH: ./logs
@@ -38,7 +38,7 @@ services:
       MAIL_PORT: 587
       APPLE_TEAM_ID: example-apple-team-id
       APPLE_SIGN_IN_KEY_ID: example-apple-sign-in-key
+      SPRING_PROFILES_ACTIVE: dev
 
 volumes:
-  mongodb_data_container:
   maven-cache:

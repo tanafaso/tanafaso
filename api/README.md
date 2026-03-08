@@ -25,66 +25,12 @@ Also, take a look at the [Frontend](https://github.com/challenge-azkar/tanafaso-
 - Navigate to the location you want to save Tanafaso's backend at.
 - Clone the repository: `git clone https://github.com/tanafaso/tanafaso-backend.git`
 - Change directory: `cd tanafaso-backend/`
-### 1. Run the server using Docker
+
+### Run the server using Docker
 **Note** that docker may take a long time building images for the first time.
 - Install [Docker](https://docs.docker.com/get-docker/)
 - Run: `docker compose up`
-- Try requesting http://localhost:8080
-### 2. Setup & Run without Docker
-#### 2.1. Setup MongoDB
-For this please follow the official [MongoDB installation guide](https://docs.mongodb.com/manual/installation/).
-
-As an example for Ubuntu 16.04:
-```
-    wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
-    sudo apt-get install gnupg
-    wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -
-    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
-    sudo apt-get update
-    sudo apt-get install -y mongodb-org
-```
-#### 2.2. Start Mongo
-Use your OS's intialization program, for Ubuntu, one can use systemctl.
-```
-    sudo systemctl start mongod
-    sudo systemctl status mongod
-```
-#### 2.3. Install Java
-```
-    sudo apt-get install default-jre
-    sudo apt-get install default-jdk
-```
-#### 2.4. Build & Start Server
-
-Build tanafaso's package and skip running tests for now. **Note** that in the first time you will try to run the package command it may take a long time to pull all of the project's maven dependencies but those dependencies will be cached by maven so that future builds are faster.
-```
-        ./mvnw -Dmaven.test.skip=true package
-```
-Now you should find the same jar used by tanafaso's server at target/tanafaso.jar
- 
-#### 2.5. Run Local Server Instance
-##### Only One-time Setup
-- Enter the mongo shell.
-```
-        mongo
-```
-- Create the user that will be used by the server. The user creation command is saved in `mongo-init.js` file.
-```
-        mongo < ./mongo-init.js
-```
-##### Everytime Setup
-- Set devlopment environment variables.
-```
-        source env-dev.sh
-```
-- Build and Run a dev instance and specify the `dev` profile so that [application-dev.yml](https://github.com/challenge-azkar/tanafaso-backend/blob/master/src/main/resources/application-dev.yml) is used instead of [application.yml](https://github.com/challenge-azkar/tanafaso-backend/blob/master/src/main/resources/application.yml).
-```
-        ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
-```
-You should find a log line like `Tomcat started on port(s): 8080 (http)`.
-
-Congratulations! You have a local instance of the server running and listening for requests at
- http://localhost:8080.
+- The server will be available at http://localhost:8080
 
 ## Contributing
 (Optionally) join Tanafaso's [discord server](https://discord.gg/jSKsZdJcT5) to give feedback, propose new features or ask for help.

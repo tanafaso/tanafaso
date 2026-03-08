@@ -17,7 +17,7 @@ spring:
     lazy-initialization: true
   data.mongodb:
     auto-index-creation: true
-    uri: mongodb://${DATABASE_USER}:${DATABASE_PASSWORD}@localhost:27017/${DATABASE_NAME}
+    uri: ${DATABASE_URI}
   http:
     log-request-details: true
   resources.add-mappings: false
